@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {
@@ -13,5 +13,21 @@ class GroupController extends Controller
         return view('groups', [
             'groups' => $groups
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        if($request->location){
+            $groups = DB::table('groups')
+                            ->where('city', 'LIKE', "%$request->location%")
+                            ->orWhere('postcode', 'LIKE', "%$request->location%")
+                            ->get();
+            return view('home', [
+                'groups' => $groups
+            ]);
+        }
+
+        return view('home');
+
     }
 }
