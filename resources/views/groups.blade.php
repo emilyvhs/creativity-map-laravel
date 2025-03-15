@@ -22,27 +22,17 @@
 
 <body>
 
-<div class="m-6">
-    <h1 class="font-bold text-4xl text-center px-4 pb-4">Welcome to the Creativity Map!</h1>
-    <p>This tool will help you find local creative groups near you.<br>
-        You can explore the map by:</p>
-        <ul class="list-disc list-inside pl-4">
-            <li>location</li>
-            <li>creative activity</li>
-            <li>group name</li>
-            <li>keywords (e.g. 'relaxed', 'friendly', 'young people')</li>
-        </ul>
-    <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
-</div>
+<div class="flex flex-col m-6">
+    <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
+    @foreach($groups as $group)
+        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+            <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+            <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}" />
+            <p>{{ $group->description }}</p>
+        </div>
+    @endforeach
 
-<div class="m-6">
-    <form>
-        @csrf
-        <label class="font-semibold">Keyword search:
-            <input type="text" id="search" name="search"
-            class="border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500" />
-        </label>
-    </form>
 </div>
 
 </body>
