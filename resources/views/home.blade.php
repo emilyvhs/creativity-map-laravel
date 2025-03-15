@@ -35,7 +35,6 @@
     <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
 </div>
 
-
 <form>
     @csrf
     <div class="flex flex-col m-6 gap-2">
@@ -48,9 +47,19 @@
         </div>
 
         <div>
-            <label class="font-semibold">Keyword search:
+            <label class="font-semibold">Keyword:
                 <input type="text" id="keyword" name="keyword"
                        class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+            </label>
+        </div>
+
+        <div>
+            <label class="font-semibold">Creative activity:
+                <select class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                    @foreach($activities as $activity)
+                        <option>{{ $activity->activity }}</option>
+                    @endforeach
+                </select>
             </label>
         </div>
 
@@ -62,28 +71,26 @@
     </div>
 </form>
 
-
-
 @isset($groups)
 
-        <?php $counter = 0 ?>
-        @foreach($groups as $group)
-            <?php $counter++ ?>
-        @endforeach
+    <?php $counter = 0 ?>
+    @foreach($groups as $group)
+        <?php $counter++ ?>
+    @endforeach
 
-        @if ($counter > 0)
-            <p class="mx-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
-        @endif
+    @if ($counter > 0)
+        <p class="mx-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
+    @endif
 
-        @forelse($groups as $group)
-            <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
-                <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-                <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
-                <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}" />
-            </div>
-            @empty
-                <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
-        @endforelse
+    @forelse($groups as $group)
+        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+            <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+            <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}" />
+        </div>
+    @empty
+        <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
+    @endforelse
 @endisset
 
 </body>

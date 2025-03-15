@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,12 @@ class GroupController extends Controller
 
     public function search(Request $request)
     {
-        if (!$request->location && !$request->keyword){
-            return view('home');
+        $activities = Activity::all();
+
+        if(!$request->location && !$request->keyword){
+            return view('home', [
+                'activities' => $activities
+            ]);
         }
 
         if (($request->location !== "") && ($request->keyword !== "")){
@@ -30,7 +35,8 @@ class GroupController extends Controller
                 ->where('description', 'LIKE', "%$request->keyword%")
                 ->get();
             return view('home', [
-                'groups' => $groups
+                'groups' => $groups,
+                'activities' => $activities
             ]);
         }
 
@@ -40,7 +46,8 @@ class GroupController extends Controller
                             ->orWhere('postcode', 'LIKE', "%$request->location%")
                             ->get();
             return view('home', [
-                'groups' => $groups
+                'groups' => $groups,
+                'activities' => $activities
             ]);
         }
 
@@ -49,11 +56,13 @@ class GroupController extends Controller
                 ->where('description', 'LIKE', "%$request->keyword%")
                 ->get();
             return view('home', [
-                'groups' => $groups
+                'groups' => $groups,
+                'activities' => $activities
             ]);
         }
 
-        return view('home');
-
+        return view('home', [
+            'activities' => $activities
+        ]);
     }
 }
