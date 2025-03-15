@@ -63,17 +63,20 @@
 </form>
 
 @isset($groups)
-
+        <?php $counter = 0 ?>
         @forelse($groups as $group)
+            <?php $counter++ ?>
             <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
                 <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
                 <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
                 <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}" />
             </div>
             @empty
-                <p class="mx-4">Sorry, no creative groups found! Please try a different search.</p>
+                <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
         @endforelse
-
+        @if ($counter > 0)
+            <p class="m-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
+        @endif
 @endisset
 
 </body>
