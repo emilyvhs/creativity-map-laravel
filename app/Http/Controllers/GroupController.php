@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,10 +18,28 @@ class GroupController extends Controller
 
     public function search(Request $request)
     {
-        if($request->location){
+        if (!$request->location && !$request->keyword){
+            return view('home');
+        }
+
+        if (($request->location !== "") && ($request->keyword !== "")){
+            $groups = DB::table('groups')
+                ->whereAny([
+                    'city',
+                    'postcode',
+                ], 'LIKE', "%$request->location%")
+                ->where('description', 'LIKE', "%$request->keyword%")
+                ->get();
+            return view('home', [
+                'groups' => $groups
+            ]);
+        }
+
+        if($request->location || $request->keyword){
             $groups = DB::table('groups')
                             ->where('city', 'LIKE', "%$request->location%")
                             ->orWhere('postcode', 'LIKE', "%$request->location%")
+                            ->orWhere('description', 'LIKE', "%$request->keyword%")
                             ->get();
             return view('home', [
                 'groups' => $groups

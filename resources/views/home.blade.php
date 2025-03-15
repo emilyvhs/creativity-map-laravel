@@ -47,12 +47,12 @@
             </label>
         </div>
 
-{{--        <div>--}}
-{{--            <label class="font-semibold">Keyword search:--}}
-{{--                <input type="text" id="search" name="search"--}}
-{{--                       class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>--}}
-{{--            </label>--}}
-{{--        </div>--}}
+        <div>
+            <label class="font-semibold">Keyword search:
+                <input type="text" id="keyword" name="keyword"
+                       class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+            </label>
+        </div>
 
         <div class="flex justify-center m-4">
             <input type="submit" value="Find a creative group!"
@@ -70,7 +70,7 @@
         @endforeach
 
         @if ($counter > 0)
-            <p class="m-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
+            <p class="mx-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
         @endif
 
         @forelse($groups as $group)
