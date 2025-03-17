@@ -12,4 +12,10 @@ class ActivityController extends Controller
         $activities = Activity::all();
         return $activities;
     }
+
+//    public function activity1()
+//    {
+//        $activity1 = Activity::class->activity1();
+//        return $activity1;
+//    }
 }

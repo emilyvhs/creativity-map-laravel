@@ -47,17 +47,19 @@
         </div>
 
         <div>
-            <label class="font-semibold">Keyword:
-                <input type="text" id="keyword" name="keyword"
+            <label class="font-semibold">Group name:
+                <input type="text" id="name" name="name"
                        class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
             </label>
         </div>
 
         <div>
             <label class="font-semibold">Creative activity:
-                <select class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                <select id="activity" name="activity"
+                        class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                    <option selected value="">All activities</option>
                     @foreach($activities as $activity)
-                        <option>{{ $activity->activity }}</option>
+                        <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                     @endforeach
                 </select>
             </label>

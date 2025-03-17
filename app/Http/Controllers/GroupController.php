@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,28 +12,35 @@ class GroupController extends Controller
     public function all()
     {
         $groups = Group::all();
+
         return view('groups', [
-            'groups' => $groups
+            'groups' => $groups,
         ]);
     }
+
 
     public function search(Request $request)
     {
         $activities = Activity::all();
 
-        if(!$request->location && !$request->keyword){
+        if(!$request->location && !$request->name){
             return view('home', [
                 'activities' => $activities
             ]);
         }
 
-        if (($request->location !== "") && ($request->keyword !== "")){
+        if (($request->location !== "") && ($request->name !== "") && ($request->activity !== "")){
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
                     'postcode',
                 ], 'LIKE', "%$request->location%")
-                ->where('description', 'LIKE', "%$request->keyword%")
+                ->where('name', 'LIKE', "%$request->name%")
+                ->whereAny([
+                    'activity1',
+                    'activity2',
+                    'activity3',
+                ], '=', "$request->activity")
                 ->get();
             return view('home', [
                 'groups' => $groups,
@@ -40,7 +48,7 @@ class GroupController extends Controller
             ]);
         }
 
-        if(($request->location !== "") && ($request->keyword)){
+        if(($request->location !== "") && ($request->name)){
             $groups = DB::table('groups')
                             ->where('city', 'LIKE', "%$request->location%")
                             ->orWhere('postcode', 'LIKE', "%$request->location%")
@@ -51,9 +59,9 @@ class GroupController extends Controller
             ]);
         }
 
-        if(($request->keyword !== "") && ($request->location)){
+        if(($request->name !== "") && ($request->location)){
             $groups = DB::table('groups')
-                ->where('description', 'LIKE', "%$request->keyword%")
+                ->where('name', 'LIKE', "%$request->name%")
                 ->get();
             return view('home', [
                 'groups' => $groups,
