@@ -23,13 +23,13 @@ class GroupController extends Controller
     {
         $activities = Activity::all();
 
-        if(!$request->location && !$request->name){
+        if(!$request->location && !$request->name && !$request->activity){
             return view('home', [
                 'activities' => $activities
             ]);
         }
 
-        if (($request->location !== "") && ($request->name !== "") && ($request->activity !== "")){
+        if (($request->location !== "") && ($request->name !== "") && ($request->activity != "all")){
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
@@ -48,18 +48,67 @@ class GroupController extends Controller
             ]);
         }
 
-        if(($request->location !== "") && ($request->name)){
+        if(($request->location !== "") && ($request->name !== "") && ($request->activity === "all")){
             $groups = DB::table('groups')
-                            ->where('city', 'LIKE', "%$request->location%")
-                            ->orWhere('postcode', 'LIKE', "%$request->location%")
-                            ->get();
+                ->whereAny([
+                    'city',
+                    'postcode',
+                ], 'LIKE', "%$request->location%")
+                ->where('name', 'LIKE', "%$request->name%")
+                ->get();
+            return view('home', [
+                'groups' => $groups,
+                'activities' => $activities
+            ]);
+        }
+//
+        if(($request->name !== "") && ($request->activity != "all") && ($request->location === "")){
+            $groups = DB::table('groups')
+                ->where('name', 'LIKE', "%$request->name%")
+                ->whereAny([
+                    'activity1',
+                    'activity2',
+                    'activity3',
+                ], '=', "$request->activity")
+                ->get();
             return view('home', [
                 'groups' => $groups,
                 'activities' => $activities
             ]);
         }
 
-        if(($request->name !== "") && ($request->location)){
+        if(($request->location !== "") && ($request->activity != "all") && ($request->name === "")){
+            $groups = DB::table('groups')
+                ->whereAny([
+                    'city',
+                    'postcode',
+                ], 'LIKE', "%$request->location%")
+                ->whereAny([
+                    'activity1',
+                    'activity2',
+                    'activity3',
+                ], '=', "$request->activity")
+                ->get();
+            return view('home', [
+                'groups' => $groups,
+                'activities' => $activities
+            ]);
+        }
+
+        if(($request->location !== "") && ($request->activity === "all") && ($request->name === "")){
+            $groups = DB::table('groups')
+                ->whereAny([
+                    'city',
+                    'postcode',
+                ], 'LIKE', "%$request->location%")
+                ->get();
+            return view('home', [
+                'groups' => $groups,
+                'activities' => $activities
+            ]);
+        }
+
+        if(($request->name !== "") && ($request->activity === "all") && ($request->location === "")){
             $groups = DB::table('groups')
                 ->where('name', 'LIKE', "%$request->name%")
                 ->get();
@@ -69,8 +118,25 @@ class GroupController extends Controller
             ]);
         }
 
-        return view('home', [
-            'activities' => $activities
-        ]);
+        if(($request->activity != "all") && ($request->name === "") && ($request->location === "")){
+            $groups = DB::table('groups')
+                ->whereAny([
+                    'activity1',
+                    'activity2',
+                    'activity3',
+                ], '=', "$request->activity")
+                ->get();
+            return view('home', [
+                'groups' => $groups,
+                'activities' => $activities
+            ]);
+        }
+
+            return view('home', [
+                'activities' => $activities
+            ]);
+
+
+
     }
 }

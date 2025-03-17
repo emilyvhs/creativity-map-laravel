@@ -57,7 +57,7 @@
             <label class="font-semibold">Creative activity:
                 <select id="activity" name="activity"
                         class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                    <option selected value="">All activities</option>
+                    <option selected value="all">All activities</option>
                     @foreach($activities as $activity)
                         <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                     @endforeach
