@@ -13,10 +13,21 @@ class Group extends Model
     /** @use HasFactory<\Database\Factories\GroupFactory> */
     use HasFactory;
 
-    public function activities():HasMany
+    public function firstActivities():HasMany
     {
         return $this->hasMany(Activity::class, 'id', 'activity1');
     }
+
+    public function secondActivities():HasMany
+    {
+        return $this->hasMany(Activity::class, 'id', 'activity2');
+    }
+
+    public function thirdActivities():HasMany
+    {
+        return $this->hasMany(Activity::class, 'id', 'activity3');
+    }
+
 
 }
 

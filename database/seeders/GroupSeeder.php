@@ -20,7 +20,7 @@ class GroupSeeder extends Seeder
                 'city' => fake()->city(),
                 'postcode' => fake()->postcode(),
                 'activity1' => fake()->numberBetween(1, 9),
-                'activity2' => fake()->numberBetween(1, 9),
+//                'activity2' => fake()->numberBetween(1, 9),
                 'activity3' => fake()->numberBetween(1, 9),
                 'description' => fake()->paragraphs(3, true),
                 'image' => fake()->imageUrl(),

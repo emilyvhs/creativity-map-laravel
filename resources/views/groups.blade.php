@@ -1476,16 +1476,27 @@
 <div class="flex flex-col m-6">
     <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
     @foreach($groups as $group)
-        <?php $activities = Group::find($group->id)->activities;
+        <?php
+            $firstActivities = Group::find($group->id)->firstActivities;
+            $secondActivities = Group::find($group->id)->secondActivities;
+            $thirdActivities = Group::find($group->id)->thirdActivities;
 
             ?>
         <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
             <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-            <h2 class="font-semibold text-3xl">
-                @foreach($activities as $activity)
-                {{ $activity->activity }}
+            <p class="font-semibold text-2xl">
+                @foreach($firstActivities as $firstActivity)
+                Join us for: {{ $firstActivity->activity }}
                 @endforeach
-            </h2>
+                @forelse($secondActivities as $secondActivity)
+                | {{ $secondActivity->activity }}
+                    @empty
+                @endforelse
+                @forelse($thirdActivities as $thirdActivity)
+                | {{ $thirdActivity->activity }}
+                    @empty
+                @endforelse
+            </p>
             <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
             <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
             <p>{{ $group->description }}</p>
