@@ -1484,12 +1484,20 @@
         <li>keyword (e.g. 'relaxed', 'friendly')</li>
     </ul>
     <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
+    <div class="flex justify-center">
+        <a href="/groups"
+           class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500">
+            View all groups</a>
+    </div>
 </div>
 
 <form>
     @csrf
     <div class="flex flex-col m-6 gap-2">
 
+        <div>
+            <h2 class="font-semibold text-3xl">Search for a creative group</h2>
+        </div>
         <div>
             <label class="font-semibold">Location (city or postcode):
                 <input type="text" id="location" name="location"
