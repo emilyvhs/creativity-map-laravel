@@ -18,6 +18,14 @@ class GroupController extends Controller
         ]);
     }
 
+    public function find(int $id)
+    {
+        $group = Group::find($id);
+
+        return view ('singleGroup', [
+            'group' => $group
+        ]);
+    }
 
     public function search(Request $request)
     {
@@ -61,7 +69,7 @@ class GroupController extends Controller
                 'activities' => $activities
             ]);
         }
-//
+
         if(($request->name !== "") && ($request->activity != "all") && ($request->location === "")){
             $groups = DB::table('groups')
                 ->where('name', 'LIKE', "%$request->name%")
@@ -118,7 +126,7 @@ class GroupController extends Controller
             ]);
         }
 
-        if(($request->activity != "all") && ($request->name === "") && ($request->location === "")){
+        if(($request->activity !== "all") && ($request->name === "") && ($request->location === "")){
             $groups = DB::table('groups')
                 ->whereAny([
                     'activity1',
