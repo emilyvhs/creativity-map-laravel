@@ -1484,7 +1484,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
     <h1 class="font-bold text-4xl text-center px-4 pb-4">{{ $group->name }}</h1>
 
 
-        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+        <div class="p-4 m-4 border-2 rounded-sm border-teal-300">
             <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
             <p class="font-semibold text-2xl">
                 @foreach($firstActivities as $firstActivity)
