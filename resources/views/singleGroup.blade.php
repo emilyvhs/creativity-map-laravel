@@ -1477,7 +1477,6 @@
 $firstActivities = Group::find($group->id)->firstActivities;
 $secondActivities = Group::find($group->id)->secondActivities;
 $thirdActivities = Group::find($group->id)->thirdActivities;
-
 ?>
 
 <div class="flex flex-col m-6">
@@ -1486,7 +1485,8 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
 
         <div class="p-4 m-4 border-2 rounded-sm border-teal-300">
             <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-            <p class="font-semibold text-2xl">
+            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+            <p class="font-semibold text-xl">
                 @foreach($firstActivities as $firstActivity)
                     Join us for: {{ $firstActivity->activity }}
                 @endforeach
@@ -1499,7 +1499,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                 @empty
                 @endforelse
             </p>
-            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+
             <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
             <p>{{ $group->description }}</p>
         </div>
