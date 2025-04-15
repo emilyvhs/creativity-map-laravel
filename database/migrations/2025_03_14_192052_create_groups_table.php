@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('address');
             $table->string('city');
-            $table->string('postcode');
+            $table->string('postcode')->nullable();
             $table->integer('activity1');
             $table->integer('activity2')->nullable();
             $table->integer('activity3')->nullable();
@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('image_alt_text')->nullable()->default("");
             $table->string('contact_name');
             $table->string('contact_email');
+            $table->float('lat')->nullable();
+            $table->float('lng')->nullable();
             $table->timestamps();
         });
     }
