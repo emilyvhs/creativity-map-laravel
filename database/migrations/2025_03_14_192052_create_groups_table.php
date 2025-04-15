@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name', 200);
             $table->string('address');
             $table->string('city');
             $table->string('postcode')->nullable();
             $table->integer('activity1');
             $table->integer('activity2')->nullable();
             $table->integer('activity3')->nullable();
-            $table->string('description', 1000);
+            $table->string('description', 2000);
             $table->string('image')->nullable();
-            $table->string('image_alt_text')->nullable()->default("");
+            $table->string('image_alt_text')->nullable()->default('');
             $table->string('contact_name');
             $table->string('contact_email');
             $table->float('lat')->nullable();

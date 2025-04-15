@@ -13,10 +13,26 @@ class ActivitySeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 9; $i++){
-            DB::table('activities')->insert([
-                'activity' => fake()->word()
-            ]);
-        }
+
+        DB::table('activities')->insert([
+            [
+                'activity' => 'Music and singing'
+            ],
+            [
+                'activity' => 'Arts and crafts'
+            ],
+            [
+                'activity' => 'Drama and theatre'
+            ],
+            [
+                'activity' => 'Dance'
+            ],
+            [
+                'activity' => 'Gardening'
+            ]
+
+        ]);
+
     }
+
 }

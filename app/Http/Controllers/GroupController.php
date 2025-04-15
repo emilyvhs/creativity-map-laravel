@@ -22,8 +22,8 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
 
-        return view ('singleGroup', [
-            'group' => $group
+        return view('singleGroup', [
+            'group' => $group,
         ]);
     }
 
@@ -31,13 +31,13 @@ class GroupController extends Controller
     {
         $activities = Activity::all();
 
-        if(!$request->location && !$request->name && !$request->activity){
+        if (! $request->location && ! $request->name && ! $request->activity) {
             return view('home', [
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if (($request->location !== "") && ($request->name !== "") && ($request->activity != "all")){
+        if (($request->location !== '') && ($request->name !== '') && ($request->activity != 'all')) {
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
@@ -50,13 +50,14 @@ class GroupController extends Controller
                     'activity3',
                 ], '=', "$request->activity")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->location !== "") && ($request->name !== "") && ($request->activity === "all")){
+        if (($request->location !== '') && ($request->name !== '') && ($request->activity === 'all')) {
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
@@ -64,13 +65,14 @@ class GroupController extends Controller
                 ], 'LIKE', "%$request->location%")
                 ->where('name', 'LIKE', "%$request->name%")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->name !== "") && ($request->activity != "all") && ($request->location === "")){
+        if (($request->name !== '') && ($request->activity != 'all') && ($request->location === '')) {
             $groups = DB::table('groups')
                 ->where('name', 'LIKE', "%$request->name%")
                 ->whereAny([
@@ -79,13 +81,14 @@ class GroupController extends Controller
                     'activity3',
                 ], '=', "$request->activity")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->location !== "") && ($request->activity != "all") && ($request->name === "")){
+        if (($request->location !== '') && ($request->activity != 'all') && ($request->name === '')) {
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
@@ -97,36 +100,39 @@ class GroupController extends Controller
                     'activity3',
                 ], '=', "$request->activity")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->location !== "") && ($request->activity === "all") && ($request->name === "")){
+        if (($request->location !== '') && ($request->activity === 'all') && ($request->name === '')) {
             $groups = DB::table('groups')
                 ->whereAny([
                     'city',
                     'postcode',
                 ], 'LIKE', "%$request->location%")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->name !== "") && ($request->activity === "all") && ($request->location === "")){
+        if (($request->name !== '') && ($request->activity === 'all') && ($request->location === '')) {
             $groups = DB::table('groups')
                 ->where('name', 'LIKE', "%$request->name%")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-        if(($request->activity !== "all") && ($request->name === "") && ($request->location === "")){
+        if (($request->activity !== 'all') && ($request->name === '') && ($request->location === '')) {
             $groups = DB::table('groups')
                 ->whereAny([
                     'activity1',
@@ -134,17 +140,16 @@ class GroupController extends Controller
                     'activity3',
                 ], '=', "$request->activity")
                 ->get();
+
             return view('home', [
                 'groups' => $groups,
-                'activities' => $activities
+                'activities' => $activities,
             ]);
         }
 
-            return view('home', [
-                'activities' => $activities
-            ]);
-
-
+        return view('home', [
+            'activities' => $activities,
+        ]);
 
     }
 }
