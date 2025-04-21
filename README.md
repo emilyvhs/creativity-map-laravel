@@ -7,7 +7,7 @@ This project is a proof-of-concept to create a functional mapper for creative ac
 
 2. Creative activity/group leaders who would like to broaden their reach to attract new members through submitting simple directory-style data rather than set up and maintain an additional digital profile/platform
 
-3. Organisers and advocates for widening access to creative participation who would like to gather data on existing availability/types of local creative actities
+3. Organisers and advocates for widening access to creative participation who would like to gather data on existing availability/types of local creative activities
 
 This project is currently in-progress.
 
