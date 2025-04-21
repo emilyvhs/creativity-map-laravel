@@ -1473,7 +1473,7 @@
 
 <body>
 
-<div class="m-6
+<section class="m-6
             md:grid md:grid-cols-5 ">
     <div></div>
 
@@ -1496,7 +1496,7 @@
 
     <div></div>
 
-</div>
+</section>
 
 <form>
     @csrf
@@ -1559,7 +1559,7 @@
                   md:text-center">Groups found: {{ $counter }}</p>
     @endif
 
-    <div class="md:grid md:grid-cols-3">
+    <section class="md:grid md:grid-cols-3">
 
         @forelse($groups as $group)
             <?php
@@ -1571,7 +1571,7 @@
             <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
                 <a href="/groups/{{ $group->id }}">
                     <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-                    <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+                    <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
                     <p class="text-xl pt-4">
                         @foreach($firstActivities as $firstActivity)
                             Join us for: {{ $firstActivity->activity }}
@@ -1596,7 +1596,7 @@
         <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
     @endforelse
 
-    </div>
+    </section>
 @endisset
 
 </body>
