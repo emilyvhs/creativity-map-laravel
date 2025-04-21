@@ -8,4 +8,6 @@ Route::get('/', [GroupController::class, 'search']);
 Route::get('groups', [GroupController::class, 'all']);
 Route::get('groups/{id}', [GroupController::class, 'find']);
 
+Route::post('groups/add', [GroupController::class, 'create']);
+
 Route::get('map', [MapController::class, 'getCoordinates']);

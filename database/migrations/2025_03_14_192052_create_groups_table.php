@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('activity2')->nullable();
             $table->integer('activity3')->nullable();
             $table->string('description', 2000);
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default('https://placehold.co/400');
             $table->string('image_alt_text')->nullable()->default('');
             $table->string('contact_name');
             $table->string('contact_email');
