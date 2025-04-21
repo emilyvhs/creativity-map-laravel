@@ -1473,60 +1473,76 @@
 
 <body>
 
-<div class="m-6">
-    <h1 class="font-bold text-4xl text-center px-4 pb-4">Welcome to the Creativity Map!</h1>
-    <p>This tool will help you find local creative groups near you.<br>
-        You can explore the map by searching for a:</p>
-    <ul class="list-disc list-inside pl-4">
-        <li>location</li>
-        <li>group name</li>
-        <li>creative activity</li>
-    </ul>
-    <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
-    <div class="flex justify-center">
-        <a href="/groups"
-           class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500">
-            View all groups</a>
+<div class="m-6
+            md:grid md:grid-cols-5 ">
+    <div></div>
+
+    <div class="md:col-span-3">
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Welcome to the Creativity Map!</h1>
+        <p>This tool will help you find local creative groups near you.<br>
+            You can explore the map by searching for a:</p>
+        <ul class="list-disc list-inside pl-4">
+            <li>location</li>
+            <li>group name</li>
+            <li>creative activity</li>
+        </ul>
+        <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
+        <div class="flex justify-center m-4">
+            <a href="/groups"
+               class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500">
+                View all groups</a>
+        </div>
     </div>
+
+    <div></div>
+
 </div>
 
 <form>
     @csrf
-    <div class="flex flex-col m-6 gap-2">
+    <div class="flex flex-col m-6 gap-2
+                md:grid md:grid-cols-5 ">
 
-        <div>
-            <h2 class="font-semibold text-3xl">Search for a creative group</h2>
-        </div>
-        <div>
-            <label class="font-semibold">Location (city or postcode):
-                <input type="text" id="location" name="location"
-                       class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
-            </label>
+        <div></div>
+
+        <div class="md:col-span-3">
+
+            <div>
+                <h2 class="font-semibold text-3xl">Search for a creative group</h2>
+            </div>
+            <div>
+                <label class="font-semibold">Location (city or postcode):
+                    <input type="text" id="location" name="location"
+                           class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                </label>
+            </div>
+
+            <div>
+                <label class="font-semibold">Group name:
+                    <input type="text" id="name" name="name"
+                           class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                </label>
+            </div>
+
+            <div>
+                <label class="font-semibold">Creative activity:
+                    <select id="activity" name="activity"
+                            class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                        <option selected value="all">All activities</option>
+                        @foreach($activities as $activity)
+                            <option value="{{$activity->id}}">{{ $activity->activity }}</option>
+                        @endforeach
+                    </select>
+                </label>
+            </div>
+
+            <div class="flex justify-center m-4">
+                <input type="submit" value="Find a creative group!"
+                       class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500"/>
+            </div>
         </div>
 
-        <div>
-            <label class="font-semibold">Group name:
-                <input type="text" id="name" name="name"
-                       class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
-            </label>
-        </div>
-
-        <div>
-            <label class="font-semibold">Creative activity:
-                <select id="activity" name="activity"
-                        class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                    <option selected value="all">All activities</option>
-                    @foreach($activities as $activity)
-                        <option value="{{$activity->id}}">{{ $activity->activity }}</option>
-                    @endforeach
-                </select>
-            </label>
-        </div>
-
-        <div class="flex justify-center m-4">
-            <input type="submit" value="Find a creative group!"
-                   class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500"/>
-        </div>
+        <div></div>
 
     </div>
 </form>
@@ -1539,37 +1555,48 @@
     @endforeach
 
     @if ($counter > 0)
-        <p class="mx-4 text-xl font-semibold">Groups found: {{ $counter }}</p>
+        <p class="mx-4 text-xl font-semibold
+                  md:text-center">Groups found: {{ $counter }}</p>
     @endif
 
-    @forelse($groups as $group)
+    <div class="md:grid md:grid-cols-3">
+
+        @forelse($groups as $group)
             <?php
             $firstActivities = Group::find($group->id)->firstActivities;
             $secondActivities = Group::find($group->id)->secondActivities;
             $thirdActivities = Group::find($group->id)->thirdActivities;
             ?>
-        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
-            <a href="/groups/{{ $group->id }}">
-                <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-                <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
-                <p class="text-xl">
-                    @foreach($firstActivities as $firstActivity)
-                        Join us for: {{ $firstActivity->activity }}
-                    @endforeach
-                    @forelse($secondActivities as $secondActivity)
-                        | {{ $secondActivity->activity }}
-                    @empty
-                    @endforelse
-                    @forelse($thirdActivities as $thirdActivity)
-                        | {{ $thirdActivity->activity }}
-                    @empty
-                    @endforelse
-                    <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
-            </a>
-        </div>
+
+            <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+                <a href="/groups/{{ $group->id }}">
+                    <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+                    <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
+                    <p class="text-xl pt-4">
+                        @foreach($firstActivities as $firstActivity)
+                            Join us for: {{ $firstActivity->activity }}
+                        @endforeach
+                        @forelse($secondActivities as $secondActivity)
+                            | {{ $secondActivity->activity }}
+                        @empty
+                        @endforelse
+                        @forelse($thirdActivities as $thirdActivity)
+                            | {{ $thirdActivity->activity }}
+                        @empty
+                        @endforelse
+                    </p>
+                    <div class="flex justify-center pt-4">
+                        <img class="rounded-sm" src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
+                    </div>
+                </a>
+            </div>
+
+
     @empty
         <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
     @endforelse
+
+    </div>
 @endisset
 
 </body>
