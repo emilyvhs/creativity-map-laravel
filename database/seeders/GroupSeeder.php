@@ -104,8 +104,6 @@ class GroupSeeder extends Seeder
                 'contact_email' => fake()->email(),
             ],
 
-
-
         ]);
     }
 }

@@ -1479,9 +1479,8 @@
         You can explore the map by searching for a:</p>
     <ul class="list-disc list-inside pl-4">
         <li>location</li>
-        <li>creative activity</li>
         <li>group name</li>
-        <li>keyword (e.g. 'relaxed', 'friendly')</li>
+        <li>creative activity</li>
     </ul>
     <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
     <div class="flex justify-center">
