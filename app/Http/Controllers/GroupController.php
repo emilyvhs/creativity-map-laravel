@@ -154,7 +154,17 @@ class GroupController extends Controller
 
     }
 
-    public function create(Request $request){
+    public function addGroup()
+    {
+        $activities = Activity::all();
+
+        return view('addGroup', [
+            'activities' => $activities,
+        ]);
+    }
+
+    public function create(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|min:3|max:200',
             'address' => 'required|string|min:10',
@@ -183,7 +193,7 @@ class GroupController extends Controller
 
         $newPendingGroup->save();
 
-        return redirect('/');
+        return view('addGroup');
     }
 
 }

@@ -31,18 +31,95 @@
         <h1 class="font-bold text-4xl text-center px-4 pb-4">Add your group to the Creativity Map</h1>
         <p>Is your creative group open to new members?<br>
         Complete the form below to tell us all about your group.<br>
-        A member of our team will check and verify your group, then we'll add you to the map!</p>
+        A member of our team will check and verify your info, then we'll add you to the map!</p>
 
         <div class="flex flex-col m-6 gap-2">
             <form>
                 @csrf
                 <div>
-                    name, address, city, postcode, activity1/2/3, description, contact_name, contact_email
-                    <label class="font-semibold">Location (city or postcode):
-                        <input type="text" id="location" name="location"
+                    <label class="font-semibold">Name of group:
+                        <input type="text" id="name" name="name"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
+                <div>
+                    <label class="font-semibold">Street address:
+                        <input type="text" id="address" name="address"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                    </label>
+                </div>
+                <div>
+                    <label class="font-semibold">City:
+                        <input type="text" id="city" name="city"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                    </label>
+                </div>
+                <div>
+                    <label class="font-semibold">Postcode:
+                        <input type="text" id="postcode" name="postcode"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                    </label>
+                </div>
+                <div>
+                    <label class="font-semibold">Give us a short description of your group:
+                        <textarea id="description" name="description"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                        </textarea>
+                    </label>
+                </div>
+                <div>
+                    <label class="font-semibold">Contact name:
+                        <input type="text" id="contact_name" name="contact_name"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                    </label>
+                </div>
+                <div>
+                    <label class="font-semibold">Contact email:
+                        <input type="text" id="contact_email" name="contact_email"
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                    </label>
+                </div>
+
+                <div class="mt-4">
+                    <p class="font-semibold">What creative activities does your group offer?</p>
+                    <p>You can select up to three!</p>
+
+                    <label>First activity:
+                        <select id="activity1" name="activity1"
+                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                            <option selected value=null>Choose an activity</option>
+                            @foreach($activities as $activity)
+                                <option value="{{$activity->id}}">{{ $activity->activity }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+
+                    <label>Second activity:
+                        <select id="activity2" name="activity2"
+                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                            <option selected value=null>Choose an activity</option>
+                            @foreach($activities as $activity)
+                                <option value="{{$activity->id}}">{{ $activity->activity }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+
+                    <label>Third activity:
+                        <select id="activity3" name="activity3"
+                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                            <option selected value=null>Choose an activity</option>
+                            @foreach($activities as $activity)
+                                <option value="{{$activity->id}}">{{ $activity->activity }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                    </div>
+
+                <div class="flex justify-center m-4">
+                    <input type="submit" value="Submit your group!"
+                           class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"/>
+                </div>
+
             </form>
         </div>
 
