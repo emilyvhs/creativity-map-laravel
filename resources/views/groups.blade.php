@@ -50,26 +50,27 @@
             $thirdActivities = Group::find($group->id)->thirdActivities;
             ?>
 
-        <div class="p-4 m-4 border-2 rounded-sm border-teal-300">
-            <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-            <p class="font-semibold text-2xl">
-                @foreach($firstActivities as $firstActivity)
-                    Join us for: {{ $firstActivity->activity }}
-                @endforeach
-                @forelse($secondActivities as $secondActivity)
-                    | {{ $secondActivity->activity }}
-                @empty
-                @endforelse
-                @forelse($thirdActivities as $thirdActivity)
-                    | {{ $thirdActivity->activity }}
-                @empty
-                @endforelse
-            </p>
-            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
-            <div class="flex justify-center pt-4">
-                <img class="rounded-sm" src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
-            </div>
-            <p>{{ $group->description }}</p>
+        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+            <a href="/groups/{{ $group->id }}">
+                <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+                <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
+                <p class="text-xl pt-4">
+                    @foreach($firstActivities as $firstActivity)
+                        Join us for: {{ $firstActivity->activity }}
+                    @endforeach
+                    @forelse($secondActivities as $secondActivity)
+                        | {{ $secondActivity->activity }}
+                    @empty
+                    @endforelse
+                    @forelse($thirdActivities as $thirdActivity)
+                        | {{ $thirdActivity->activity }}
+                    @empty
+                    @endforelse
+                </p>
+                <div class="flex justify-center pt-4">
+                    <img class="rounded-sm" src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
+                </div>
+            </a>
         </div>
     @endforeach
 
