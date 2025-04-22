@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PendingGroupController extends Controller
 {
-    public function addGroup()
+    public function addForm()
     {
         $activities = Activity::all();
 
@@ -25,8 +25,8 @@ class PendingGroupController extends Controller
             'city' => 'required|string',
             'postcode' => 'nullable|string|min:6|max:8',
             'activity1' => 'required|integer|exists:activities,id',
-            'activity2' => 'nullable|integer|exists:activities,id',
-            'activity3' => 'nullable|integer|exists:activities,id',
+            'activity2' => 'nullable',
+            'activity3' => 'nullable',
             'description' => 'required|string|min:50|max:2000',
             'contact_name' => 'required|string|min:5|max:255',
             'contact_email' => 'required|string|min:5|max:255',
@@ -38,15 +38,31 @@ class PendingGroupController extends Controller
         $newPendingGroup->address = $request->address;
         $newPendingGroup->city = $request->city;
         $newPendingGroup->postcode = $request->postcode;
+
+        if ($request->activity1 == ""){
+            $request->activity1 = null;
+        }
+
         $newPendingGroup->activity1 = $request->activity1;
+
+        if ($request->activity2 == ""){
+            $request->activity2 = null;
+        }
+
         $newPendingGroup->activity2 = $request->activity2;
+
+        if ($request->activity3 == ""){
+            $request->activity3 = null;
+        }
+
         $newPendingGroup->activity3 = $request->activity3;
+
         $newPendingGroup->description = $request->description;
         $newPendingGroup->contact_name = $request->contact_name;
         $newPendingGroup->contact_email = $request->contact_email;
 
         $newPendingGroup->save();
 
-        return view('addGroup');
+        return redirect('/success');
     }
 }

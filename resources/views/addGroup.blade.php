@@ -34,47 +34,71 @@
         A member of our team will check and verify your info, then we'll add you to the map!</p>
 
         <div class="flex flex-col m-6 gap-2">
-            <form>
+            <form method="POST" action={{ url('groups/add') }}>
                 @csrf
+                <div class="mb-4">
+                    <p>* indicates a required field</p>
+                </div>
                 <div>
-                    <label class="font-semibold">Name of group:
+                    <label class="font-semibold">Name of group<span class="font-normal">*</span>:
+                        @error('name')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="name" name="name"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
-                    <label class="font-semibold">Street address:
+                    <label class="font-semibold">Street address<span class="font-normal">*</span>:
+                        @error('address')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="address" name="address"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
-                    <label class="font-semibold">City:
+                    <label class="font-semibold">City<span class="font-normal">*</span>:
+                        @error('city')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="city" name="city"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
                     <label class="font-semibold">Postcode:
+                        @error('postcode')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="postcode" name="postcode"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
-                    <label class="font-semibold">Give us a short description of your group:
+                    <label class="font-semibold">Give us a short description of your group<span class="font-normal">*</span>:
+                        @error('description')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <textarea id="description" name="description"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
                         </textarea>
                     </label>
                 </div>
                 <div>
-                    <label class="font-semibold">Contact name:
+                    <label class="font-semibold">Contact name<span class="font-normal">*</span>:
+                        @error('contact_name')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="contact_name" name="contact_name"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
-                    <label class="font-semibold">Contact email:
+                    <label class="font-semibold">Contact email<span class="font-normal">*</span>:
+                        @error('contact_email')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <input type="text" id="contact_email" name="contact_email"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
@@ -82,12 +106,15 @@
 
                 <div class="mt-4">
                     <p class="font-semibold">What creative activities does your group offer?</p>
-                    <p>You can select up to three!</p>
+                    <p class="mb-2">Most groups will only need to choose <strong>one</strong> category which describes broadly what they do, but you can select up to three activities if you need to!</p>
 
-                    <label>First activity:
+                    <label class="font-semibold">First activity<span class="font-normal">*</span>:
+                        @error('activity1')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <select id="activity1" name="activity1"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value=null>Choose an activity</option>
+                            <option selected value="">Choose an activity</option>
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
@@ -97,7 +124,7 @@
                     <label>Second activity:
                         <select id="activity2" name="activity2"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value=null>Choose an activity</option>
+                            <option selected value="">Choose an activity</option>
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
@@ -107,7 +134,7 @@
                     <label>Third activity:
                         <select id="activity3" name="activity3"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value=null>Choose an activity</option>
+                            <option selected value="">Choose an activity</option>
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
