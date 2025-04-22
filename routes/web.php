@@ -3,6 +3,7 @@
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PendingGroupController;
+use App\Http\Controllers\SuccessController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GroupController::class, 'search']);
@@ -14,3 +15,5 @@ Route::get('groups', [GroupController::class, 'all']);
 Route::get('groups/{id}', [GroupController::class, 'find']);
 
 Route::get('map', [MapController::class, 'getCoordinates']);
+
+Route::get('success', [SuccessController::class, 'display']);

@@ -29,13 +29,13 @@
 
     <div class="md:col-span-3">
         <h1 class="font-bold text-4xl text-center px-4 pb-4">Welcome to the Creativity Map!</h1>
-        <p>This tool will help you find local creative groups near you.<br>
+        <p>This tool will help you find local creative groups near you.<br><br>
             You can explore the map by searching for a:</p>
         <ul class="list-disc list-inside pl-4">
             <li>location</li>
             <li>group name</li>
             <li>creative activity</li>
-        </ul>
+        </ul><br>
         <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
         <div class="flex justify-center m-4">
             <a href="/groups"
