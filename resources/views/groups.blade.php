@@ -27,15 +27,24 @@
 
 <body>
 
+<header class="flex justify-between
+               md:justify-start">
+    <div class="flex justify-center m-4">
+        <a href="/"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Go back to the map</a>
+    </div>
+    <div class="flex justify-center m-4">
+        <a href="/groups/add"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Add your group</a>
+    </div>
+</header>
+
 <section>
 
     <div class="flex flex-col mx-6 mt-6">
         <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
-        <div class="flex justify-center m-4">
-            <a href="/"
-               class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
-                Go back to the Creativity Map</a>
-        </div>
     </div>
 
 </section>
