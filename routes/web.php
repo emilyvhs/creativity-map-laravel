@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApproveController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PendingGroupController;
@@ -17,3 +18,5 @@ Route::get('groups/{id}', [GroupController::class, 'find']);
 Route::get('map', [MapController::class, 'getCoordinates']);
 
 Route::get('success', [SuccessController::class, 'display']);
+
+Route::get('approve', [ApproveController::class, 'display']);
