@@ -27,42 +27,52 @@
 
 <body>
 
-<div class="flex flex-col m-6">
-    <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
-    <div class="flex justify-center m-4">
-        <a href="/"
-           class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
-            Go back to the Creativity Map</a>
+<section>
+
+    <div class="flex flex-col m-6">
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
+        <div class="flex justify-center m-4">
+            <a href="/"
+               class="text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
+                Go back to the Creativity Map</a>
+        </div>
     </div>
+
+</section>
+
+<section class="m-6
+                md:grid md:grid-cols-3">
+
     @foreach($groups as $group)
-        <?php
+            <?php
             $firstActivities = Group::find($group->id)->firstActivities;
             $secondActivities = Group::find($group->id)->secondActivities;
             $thirdActivities = Group::find($group->id)->thirdActivities;
-
             ?>
+
         <div class="p-4 m-4 border-2 rounded-sm border-teal-300">
             <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
             <p class="font-semibold text-2xl">
                 @foreach($firstActivities as $firstActivity)
-                Join us for: {{ $firstActivity->activity }}
+                    Join us for: {{ $firstActivity->activity }}
                 @endforeach
                 @forelse($secondActivities as $secondActivity)
-                | {{ $secondActivity->activity }}
-                    @empty
+                    | {{ $secondActivity->activity }}
+                @empty
                 @endforelse
                 @forelse($thirdActivities as $thirdActivity)
-                | {{ $thirdActivity->activity }}
-                    @empty
+                    | {{ $thirdActivity->activity }}
+                @empty
                 @endforelse
             </p>
             <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
-            <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
+            <div class="flex justify-center pt-4">
+                <img class="rounded-sm" src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
+            </div>
             <p>{{ $group->description }}</p>
         </div>
     @endforeach
 
-</div>
-
+</section>
 </body>
 </html>

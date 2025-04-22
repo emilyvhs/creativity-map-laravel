@@ -1,3 +1,7 @@
+@php
+    use App\Models\Group;
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
