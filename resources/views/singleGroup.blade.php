@@ -1494,29 +1494,35 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
 </header>
 
 
-<div class="flex flex-col m-6">
+<div class="flex flex-col p-4 m-4 border-2 rounded-sm border-teal-300">
     <h1 class="font-bold text-4xl text-center px-4 pb-4">{{ $group->name }}</h1>
 
 
-        <div class="p-4 m-4 border-2 rounded-sm border-teal-300">
-            <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
-            <p class="font-semibold text-2xl">Location: {{ $group->city }}</p>
-            <p class="font-semibold text-xl">
-                @foreach($firstActivities as $firstActivity)
-                    Join us for: {{ $firstActivity->activity }}
-                @endforeach
-                @forelse($secondActivities as $secondActivity)
-                    | {{ $secondActivity->activity }}
-                @empty
-                @endforelse
-                @forelse($thirdActivities as $thirdActivity)
-                    | {{ $thirdActivity->activity }}
-                @empty
-                @endforelse
-            </p>
-
-            <img src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
-            <p>{{ $group->description }}</p>
+        <div class="flex flex-col
+                    md:flex-row md:gap-4 md:justify-between">
+            <div>
+                <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
+                <p class="text-xl py-4">
+                    @foreach($firstActivities as $firstActivity)
+                        Join us for: {{ $firstActivity->activity }}
+                    @endforeach
+                    @forelse($secondActivities as $secondActivity)
+                        | {{ $secondActivity->activity }}
+                    @empty
+                    @endforelse
+                    @forelse($thirdActivities as $thirdActivity)
+                        | {{ $thirdActivity->activity }}
+                    @empty
+                    @endforelse
+                </p>
+                <p class="font-semibold">About us:</p>
+                <p>{{ $group->description }}</p>
+                <p>Want to find out more? Contact {{ $group->contact_name }} at <strong>{{ $group->contact_email }}</strong>.</p>
+            </div>
+            <div class="flex justify-center pt-4
+                        md:pt-0 md:justify-end">
+                <img class="rounded-sm" src="{{ $group->image }}" alt="{{ $group->image_alt_text }}"/>
+            </div>
         </div>
 
 
