@@ -12,7 +12,7 @@ class GroupController extends Controller
 {
     public function all()
     {
-        $groups = Group::all();
+        $groups = Group::paginate(6);
 
         return view('groups', [
             'groups' => $groups,

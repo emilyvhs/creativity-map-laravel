@@ -29,7 +29,7 @@
 
 <section>
 
-    <div class="flex flex-col m-6">
+    <div class="flex flex-col mx-6 mt-6">
         <h1 class="font-bold text-4xl text-center px-4 pb-4">All groups</h1>
         <div class="flex justify-center m-4">
             <a href="/"
@@ -40,7 +40,7 @@
 
 </section>
 
-<section class="m-6
+<section class="mx-6 mb-6
                 md:grid md:grid-cols-3">
 
     @foreach($groups as $group)
@@ -74,6 +74,12 @@
         </div>
     @endforeach
 
+
 </section>
+
+<div class="mx-4 mb-4">
+    {{ $groups->links() }}
+</div>
+
 </body>
 </html>
