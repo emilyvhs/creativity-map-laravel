@@ -12,7 +12,7 @@ class GroupController extends Controller
 {
     public function all()
     {
-        $groups = Group::paginate(6);
+        $groups = Group::where('deleted', '=', 0)->paginate(6);
 
         return view('groups', [
             'groups' => $groups,
@@ -21,7 +21,7 @@ class GroupController extends Controller
 
     public function find(int $id)
     {
-        $group = Group::find($id);
+        $group = Group::where('deleted', '=', 0)->find($id);
 
         return view('singleGroup', [
             'group' => $group,
@@ -39,7 +39,7 @@ class GroupController extends Controller
         }
 
         if (($request->location !== '') && ($request->name !== '') && ($request->activity != 'all')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->whereAny([
                     'city',
                     'postcode',
@@ -59,7 +59,7 @@ class GroupController extends Controller
         }
 
         if (($request->location !== '') && ($request->name !== '') && ($request->activity === 'all')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->whereAny([
                     'city',
                     'postcode',
@@ -74,7 +74,7 @@ class GroupController extends Controller
         }
 
         if (($request->name !== '') && ($request->activity != 'all') && ($request->location === '')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('name', 'LIKE', "%$request->name%")
                 ->whereAny([
                     'activity1',
@@ -90,7 +90,7 @@ class GroupController extends Controller
         }
 
         if (($request->location !== '') && ($request->activity != 'all') && ($request->name === '')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->whereAny([
                     'city',
                     'postcode',
@@ -109,7 +109,7 @@ class GroupController extends Controller
         }
 
         if (($request->location !== '') && ($request->activity === 'all') && ($request->name === '')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->whereAny([
                     'city',
                     'postcode',
@@ -123,7 +123,7 @@ class GroupController extends Controller
         }
 
         if (($request->name !== '') && ($request->activity === 'all') && ($request->location === '')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('name', 'LIKE', "%$request->name%")
                 ->get();
 
@@ -134,7 +134,7 @@ class GroupController extends Controller
         }
 
         if (($request->activity !== 'all') && ($request->name === '') && ($request->location === '')) {
-            $groups = DB::table('groups')
+            $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->whereAny([
                     'activity1',
                     'activity2',
