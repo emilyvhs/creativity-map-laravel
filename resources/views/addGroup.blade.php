@@ -131,6 +131,9 @@
                     </label>
 
                     <label>Second activity:
+                        @error('activity2')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <select id="activity2" name="activity2"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
                             <option selected value="">Choose an activity</option>
@@ -141,6 +144,9 @@
                     </label>
 
                     <label>Third activity:
+                        @error('activity3')
+                        <p class="text-red-600">{{ $message }} </p>
+                        @enderror
                         <select id="activity3" name="activity3"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
                             <option selected value="">Choose an activity</option>
