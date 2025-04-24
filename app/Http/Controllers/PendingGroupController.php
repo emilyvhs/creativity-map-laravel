@@ -77,7 +77,7 @@ class PendingGroupController extends Controller
         ]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, PendingGroup $pendingGroup)
     {
 
         $request->validate([
@@ -85,38 +85,27 @@ class PendingGroupController extends Controller
             'address' => 'required|string|min:10',
             'city' => 'required|string',
             'postcode' => 'nullable|string|min:6|max:8',
-            'activity1' => 'required|integer|exists:activities,id',
-            'activity2' => 'nullable|different:activity1',
-            'activity3' => 'nullable|different:activity1',
             'description' => 'required|string|min:50|max:2000',
             'contact_name' => 'required|string|min:5|max:255',
             'contact_email' => 'required|string|min:5|max:255',
         ]);
-
-        $pendingGroup = PendingGroup::where('deleted', '=', 0)->find($id);
 
         $pendingGroup->name = $request->name;
         $pendingGroup->address = $request->address;
         $pendingGroup->city = $request->city;
         $pendingGroup->postcode = $request->postcode;
 
-        if ($request->activity1 == ""){
-            $request->activity1 = null;
+        if ($request->activity1 != ""){
+            $pendingGroup->activity1 = $request->activity1;
         }
 
-        $pendingGroup->activity1 = $request->activity1;
-
-        if ($request->activity2 == ""){
-            $request->activity2 = null;
+        if ($request->activity2 != ""){
+            $pendingGroup->activity2 = $request->activity2;
         }
 
-        $pendingGroup->activity2 = $request->activity2;
-
-        if ($request->activity3 == ""){
-            $request->activity3 = null;
+        if ($request->activity3 != ""){
+            $pendingGroup->activity3 = $request->activity3;
         }
-
-        $pendingGroup->activity3 = $request->activity3;
 
         $pendingGroup->description = $request->description;
         $pendingGroup->contact_name = $request->contact_name;
@@ -124,9 +113,6 @@ class PendingGroupController extends Controller
 
         $pendingGroup->save();
 
-        return view
-
-
-
+        return redirect()->action([ApproveController::class, 'all']);
     }
 }

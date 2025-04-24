@@ -1,3 +1,4 @@
+@php use App\Models\PendingGroup; @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -22,6 +23,12 @@
 
 <body>
 
+<?php
+$firstActivities = PendingGroup::find($pendingGroup->id)->firstActivities;
+$secondActivities = PendingGroup::find($pendingGroup->id)->secondActivities;
+$thirdActivities = PendingGroup::find($pendingGroup->id)->thirdActivities;
+?>
+
 <header class="flex justify-between
                md:justify-start">
     <div class="flex justify-center m-4">
@@ -40,8 +47,10 @@
         <h1 class="font-bold text-4xl text-center px-4 pb-4">Edit pending group</h1>
 
         <div class="flex flex-col m-6 gap-2">
-            <form method="POST" action={{ url('approve/edit/{$pendingGroup->id}') }}>
+            <form action={{ url('approve/edit') }}>
+                @method('PATCH')
                 @csrf
+
                 <div class="mb-4">
                     <p>* indicates a required field</p>
                 </div>
@@ -59,7 +68,7 @@
                         @error('address')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="address" name="address"
+                        <input type="text" id="address" name="address" value="{{ old('address', $pendingGroup->address) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
@@ -68,7 +77,7 @@
                         @error('city')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="city" name="city"
+                        <input type="text" id="city" name="city" value="{{ old('city', $pendingGroup->city) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
@@ -77,7 +86,7 @@
                         @error('postcode')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="postcode" name="postcode"
+                        <input type="text" id="postcode" name="postcode" value="{{ old('postcode', $pendingGroup->postcode) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
@@ -87,7 +96,7 @@
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <textarea id="description" name="description"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">{{ old('description', $pendingGroup->description) }}
                         </textarea>
                     </label>
                 </div>
@@ -96,7 +105,7 @@
                         @error('contact_name')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="contact_name" name="contact_name"
+                        <input type="text" id="contact_name" name="contact_name" value="{{ old('contact_name', $pendingGroup->contact_name) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
@@ -105,7 +114,7 @@
                         @error('contact_email')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="contact_email" name="contact_email"
+                        <input type="text" id="contact_email" name="contact_email" value="{{ old('contact_email', $pendingGroup->contact_email) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
@@ -120,7 +129,7 @@
                         @enderror
                         <select id="activity1" name="activity1"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value="">Choose an activity</option>
+                            <option selected value="{{ old('activity1', $pendingGroup->activity1) }}">@foreach($firstActivities as $firstActivity){{ $firstActivity->activity }}@endforeach</option>
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
@@ -133,7 +142,7 @@
                         @enderror
                         <select id="activity2" name="activity2"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value="">Choose an activity</option>
+                            <option selected value="{{ old('activity3', $pendingGroup->activity2) }}">@foreach($secondActivities as $secondActivity){{ $secondActivity->activity }}@endforeach</option>
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
@@ -146,7 +155,7 @@
                         @enderror
                         <select id="activity3" name="activity3"
                                 class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
-                            <option selected value="">Choose an activity</option>
+                            <option selected value="{{ old('activity3', $pendingGroup->activity3) }}">@foreach($thirdActivities as $thirdActivity){{ $thirdActivity->activity }}@endforeach
                             @foreach($activities as $activity)
                                 <option value="{{$activity->id}}">{{ $activity->activity }}</option>
                             @endforeach
@@ -155,7 +164,7 @@
                     </div>
 
                 <div class="flex justify-center m-4">
-                    <input type="submit" value="Submit your group!"
+                    <input type="submit" value="Save edits"
                            class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"/>
                 </div>
 
