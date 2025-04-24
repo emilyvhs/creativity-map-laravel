@@ -11,7 +11,7 @@ class ApproveController extends Controller
     {
         $pendingGroups = PendingGroup::where('approved', '=', 0)->paginate(1);
 
-        return view('approveAddGroup', [
+        return view('approvePendingGroup', [
             'pendingGroups' => $pendingGroups
         ]);
     }

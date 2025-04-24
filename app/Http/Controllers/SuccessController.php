@@ -8,6 +8,6 @@ class SuccessController extends Controller
 {
     public function display()
     {
-        return view('addGroupSuccess');
+        return view('addPendingGroupSuccess');
     }
 }

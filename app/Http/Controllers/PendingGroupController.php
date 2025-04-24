@@ -12,7 +12,7 @@ class PendingGroupController extends Controller
     {
         $activities = Activity::all();
 
-        return view('addGroup', [
+        return view('addPendingGroup', [
             'activities' => $activities,
         ]);
     }

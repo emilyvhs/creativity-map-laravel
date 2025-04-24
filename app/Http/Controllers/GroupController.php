@@ -14,7 +14,7 @@ class GroupController extends Controller
     {
         $groups = Group::where('deleted', '=', 0)->paginate(6);
 
-        return view('groups', [
+        return view('allGroups', [
             'groups' => $groups,
         ]);
     }
