@@ -85,7 +85,7 @@
 
     <section class="flex justify-end pt-2">
         <div class="flex justify-center">
-            <a href="/groups"
+            <a href="/approved/{{ $pendingGroup->id }}"
                class="text-md font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300  border-fuchsia-500">
                 Approve submission</a>
         </div>

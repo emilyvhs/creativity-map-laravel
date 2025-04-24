@@ -25,5 +25,14 @@ class ApproveController extends Controller
         ]);
     }
 
-    public function
+    public function approve(int $id)
+    {
+        $pendingGroup = PendingGroup::find($id);
+
+        $pendingGroup->approved = 1;
+
+        $pendingGroup->save();
+
+        return redirect('/approve');
+    }
 }
