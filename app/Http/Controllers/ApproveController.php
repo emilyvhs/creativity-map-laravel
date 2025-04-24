@@ -9,7 +9,7 @@ class ApproveController extends Controller
 {
     public function all()
     {
-        $pendingGroups = PendingGroup::where('approved', '=', 0)->paginate(1);
+        $pendingGroups = PendingGroup::where('approved', '=', 0)->paginate(12);
 
         return view('allPendingGroups', [
             'pendingGroups' => $pendingGroups

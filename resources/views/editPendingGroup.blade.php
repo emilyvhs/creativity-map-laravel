@@ -47,9 +47,9 @@ $thirdActivities = PendingGroup::find($pendingGroup->id)->thirdActivities;
         <h1 class="font-bold text-4xl text-center px-4 pb-4">Edit pending group</h1>
 
         <div class="flex flex-col m-6 gap-2">
-            <form action={{ url('approve/edit') }}>
-                @method('PATCH')
-                @csrf
+            <form action="/approve/edit/{{ $pendingGroup->id }}" method="POST">
+                <input type="hidden" name="_method" value="PATCH" />
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                 <div class="mb-4">
                     <p>* indicates a required field</p>

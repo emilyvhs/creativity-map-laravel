@@ -77,8 +77,9 @@ class PendingGroupController extends Controller
         ]);
     }
 
-    public function update(Request $request, PendingGroup $pendingGroup)
+    public function update(Request $request, int $id)
     {
+        $pendingGroup = PendingGroup::where('deleted', '=', 0)->find($id);
 
         $request->validate([
             'name' => 'required|string|min:3|max:200',
@@ -113,6 +114,6 @@ class PendingGroupController extends Controller
 
         $pendingGroup->save();
 
-        return redirect()->action([ApproveController::class, 'all']);
+        return redirect('/approve');
     }
 }
