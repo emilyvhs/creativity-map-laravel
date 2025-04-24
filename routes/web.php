@@ -20,3 +20,4 @@ Route::get('map', [MapController::class, 'getCoordinates']);
 Route::get('success', [SuccessController::class, 'display']);
 
 Route::get('approve', [ApproveController::class, 'display']);
+Route::get('approve/edit/{id}', [PendingGroupController::class, 'update']);

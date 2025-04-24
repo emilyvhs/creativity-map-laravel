@@ -28,6 +28,7 @@ return new class extends Migration
             $table->float('lat')->nullable();
             $table->float('lng')->nullable();
             $table->boolean('approved')->default(false);
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }

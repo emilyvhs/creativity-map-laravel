@@ -65,4 +65,13 @@ class PendingGroupController extends Controller
 
         return redirect('/success');
     }
+
+    public function update(int $id)
+    {
+        $pendingGroup = PendingGroup::where('deleted', '=', 0)->find($id);
+
+        return view('editPendingGroup', [
+            'pendingGroup' => $pendingGroup,
+        ]);
+    }
 }
