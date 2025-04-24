@@ -1484,11 +1484,7 @@
            class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
             Go back to the map</a>
     </div>
-    <div class="flex justify-center m-4">
-        <a href="/groups/add"
-           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
-            Add your group</a>
-    </div>
+
 </header>
 
 <section>

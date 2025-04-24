@@ -114,6 +114,6 @@ class PendingGroupController extends Controller
 
         $pendingGroup->save();
 
-        return redirect('/approve');
+        return redirect('/approve/'.$pendingGroup->id);
     }
 }

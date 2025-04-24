@@ -33,9 +33,9 @@
             Go back to the map</a>
     </div>
     <div class="flex justify-center m-4">
-        <a href="/groups"
+        <a href="/approve"
            class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
-            View all groups</a>
+            View all pending groups</a>
     </div>
 </header>
 
