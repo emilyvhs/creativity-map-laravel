@@ -9,7 +9,9 @@ class ApproveController extends Controller
 {
     public function all()
     {
-        $pendingGroups = PendingGroup::where('approved', '=', 0)->paginate(12);
+        $pendingGroups = PendingGroup::where('approved', '=', 0)
+            ->where('deleted', '=', 0)
+            ->paginate(12);
 
         return view('allPendingGroups', [
             'pendingGroups' => $pendingGroups
@@ -18,7 +20,9 @@ class ApproveController extends Controller
 
     public function find(int $id)
     {
-        $pendingGroup = PendingGroup::where('approved', '=', 0)->find($id);
+        $pendingGroup = PendingGroup::where('approved', '=', 0)
+            ->where('deleted', '=', 0)
+            ->find($id);
 
         return view('approvePendingGroup', [
             'pendingGroup' => $pendingGroup,
@@ -30,6 +34,17 @@ class ApproveController extends Controller
         $pendingGroup = PendingGroup::find($id);
 
         $pendingGroup->approved = 1;
+
+        $pendingGroup->save();
+
+        return redirect('/approve');
+    }
+
+    public function delete(int $id)
+    {
+        $pendingGroup = PendingGroup::find($id);
+
+        $pendingGroup->deleted = 1;
 
         $pendingGroup->save();
 

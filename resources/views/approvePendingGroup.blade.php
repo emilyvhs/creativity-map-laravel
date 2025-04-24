@@ -77,7 +77,7 @@
                 Edit submission</a>
         </div>
         <div class="flex justify-center">
-            <a href="/groups"
+            <a href="/deleted/{{ $pendingGroup->id }}"
                class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                 Delete submission</a>
         </div>

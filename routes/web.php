@@ -22,6 +22,8 @@ Route::get('success', [SuccessController::class, 'display']);
 Route::get('approve', [ApproveController::class, 'all']);
 Route::get('approve/{id}', [ApproveController::class, 'find']);
 Route::get('approved/{id}', [ApproveController::class, 'approve']);
+Route::get('deleted/{id}', [ApproveController::class, 'delete']);
+
 
 Route::get('approve/edit/{id}', [PendingGroupController::class, 'editForm']);
 Route::patch('approve/edit/{id}', [PendingGroupController::class, 'update']);
