@@ -66,12 +66,67 @@ class PendingGroupController extends Controller
         return redirect('/success');
     }
 
-    public function update(int $id)
+    public function editForm(int $id)
     {
+        $activities = Activity::all();
         $pendingGroup = PendingGroup::where('deleted', '=', 0)->find($id);
 
         return view('editPendingGroup', [
+            'activities' => $activities,
             'pendingGroup' => $pendingGroup,
         ]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+
+        $request->validate([
+            'name' => 'required|string|min:3|max:200',
+            'address' => 'required|string|min:10',
+            'city' => 'required|string',
+            'postcode' => 'nullable|string|min:6|max:8',
+            'activity1' => 'required|integer|exists:activities,id',
+            'activity2' => 'nullable|different:activity1',
+            'activity3' => 'nullable|different:activity1',
+            'description' => 'required|string|min:50|max:2000',
+            'contact_name' => 'required|string|min:5|max:255',
+            'contact_email' => 'required|string|min:5|max:255',
+        ]);
+
+        $pendingGroup = PendingGroup::where('deleted', '=', 0)->find($id);
+
+        $pendingGroup->name = $request->name;
+        $pendingGroup->address = $request->address;
+        $pendingGroup->city = $request->city;
+        $pendingGroup->postcode = $request->postcode;
+
+        if ($request->activity1 == ""){
+            $request->activity1 = null;
+        }
+
+        $pendingGroup->activity1 = $request->activity1;
+
+        if ($request->activity2 == ""){
+            $request->activity2 = null;
+        }
+
+        $pendingGroup->activity2 = $request->activity2;
+
+        if ($request->activity3 == ""){
+            $request->activity3 = null;
+        }
+
+        $pendingGroup->activity3 = $request->activity3;
+
+        $pendingGroup->description = $request->description;
+        $pendingGroup->contact_name = $request->contact_name;
+        $pendingGroup->contact_email = $request->contact_email;
+
+        $pendingGroup->save();
+
+        return view
+
+
+
     }
 }

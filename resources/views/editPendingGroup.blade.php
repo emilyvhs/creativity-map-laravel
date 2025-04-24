@@ -37,13 +37,10 @@
 
     <div class="md:col-span-3">
 
-        <h1 class="font-bold text-4xl text-center px-4 pb-4">Add your group to the Creativity Map</h1>
-        <p>Is your creative group open to new members?<br>
-        Complete the form below to tell us all about your group.<br>
-        A member of our team will check and verify your info, then we'll add you to the map!</p>
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Edit pending group</h1>
 
         <div class="flex flex-col m-6 gap-2">
-            <form method="POST" action={{ url('groups/add') }}>
+            <form method="POST" action={{ url('approve/edit/{$pendingGroup->id}') }}>
                 @csrf
                 <div class="mb-4">
                     <p>* indicates a required field</p>
@@ -53,7 +50,7 @@
                         @error('name')
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
-                        <input type="text" id="name" name="name"
+                        <input type="text" id="name" name="name" value="{{ old('name', $pendingGroup->name) }}"
                                class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>

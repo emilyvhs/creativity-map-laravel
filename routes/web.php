@@ -19,5 +19,7 @@ Route::get('map', [MapController::class, 'getCoordinates']);
 
 Route::get('success', [SuccessController::class, 'display']);
 
-Route::get('approve', [ApproveController::class, 'display']);
-Route::get('approve/edit/{id}', [PendingGroupController::class, 'update']);
+Route::get('approve', [ApproveController::class, 'all']);
+Route::get('approve/{id}', [ApproveController::class, 'find']);
+Route::get('approve/edit/{id}', [PendingGroupController::class, 'editForm']);
+Route::post('approve/edit/{id}', [PendingGroupController::class, 'update']);

@@ -39,16 +39,13 @@
     </div>
 </header>
 
-<h1 class="font-bold text-4xl text-center px-4">Approve new groups</h1>
-
-@foreach($pendingGroups as $pendingGroup)
+<h1 class="font-bold text-4xl text-center px-4">Approve pending group:<br>{{ $pendingGroup->name }}</h1>
 
     <?php
     $firstActivities = PendingGroup::find($pendingGroup->id)->firstActivities;
     $secondActivities = PendingGroup::find($pendingGroup->id)->secondActivities;
     $thirdActivities = PendingGroup::find($pendingGroup->id)->thirdActivities;
     ?>
-
 
 <div class="flex flex-col p-4 m-4 border-2 rounded-sm border-teal-300">
 
@@ -75,7 +72,7 @@
 
     <section class="flex justify-end gap-2 pt-4">
         <div class="flex justify-center">
-            <a href="/"
+            <a href="/approve/edit/{{ $pendingGroup->id }}"
                class="text-md font-semibold px-3 border-2 rounded-sm hover:border-yellow-300">
                 Edit submission</a>
         </div>
@@ -96,10 +93,8 @@
 
 </div>
 
-@endforeach
 
-<div class="mx-4 mb-4">
-    {{ $pendingGroups->links() }}
-</div>
+
+
 
 </body>
