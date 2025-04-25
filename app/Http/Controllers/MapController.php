@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
-    public function getCoordinates(): void
+    public function getCoordinates()
     {
         $rows = DB::table('groups')
             ->whereAny([
@@ -25,5 +25,9 @@ class MapController extends Controller
                     ->update(['lat' => $lat, 'lng' => $lng]);
             }
         }
+
+        return redirect('/approve');
     }
+
+
 }

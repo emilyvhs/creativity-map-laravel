@@ -38,7 +38,7 @@ class ApproveController extends Controller
 
         $group->save();
 
-        return redirect('/approve');
+        return redirect('/map');
     }
 
     public function delete(int $id)
