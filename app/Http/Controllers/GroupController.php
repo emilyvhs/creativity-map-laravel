@@ -260,8 +260,18 @@ class GroupController extends Controller
             $group->activity1 = $request->activity1;
         }
 
+        if ($request->activity2 == 'remove') {
+            $request->activity2 = null;
+            $group->activity2 = $request->activity2;
+        }
+
         if ($request->activity2 != '') {
             $group->activity2 = $request->activity2;
+        }
+
+        if ($request->activity3 == 'remove') {
+            $request->activity3 = null;
+            $group->activity3 = $request->activity3;
         }
 
         if ($request->activity3 != '') {
