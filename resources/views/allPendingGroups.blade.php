@@ -1,8 +1,4 @@
-@php
-    use App\Models\PendingGroup;
-@endphp
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -1498,12 +1494,12 @@
 <section class="mx-6 mb-6
                 md:grid md:grid-cols-3">
 
-    @foreach($pendingGroups as $pendingGroup)
+    @foreach($groups as $group)
 
         <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
-            <a href="/approve/{{ $pendingGroup->id }}">
-                <h2 class="font-semibold text-3xl">{{ $pendingGroup->name }}</h2>
-                <h3 class="font-semibold text-2xl">Location: {{ $pendingGroup->city }}</h3>
+            <a href="/approve/{{ $group->id }}">
+                <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+                <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
             </a>
         </div>
     @endforeach
@@ -1512,7 +1508,7 @@
 </section>
 
 <div class="mx-4 mb-4">
-    {{ $pendingGroups->links() }}
+    {{ $groups->links() }}
 </div>
 
 </body>

@@ -25,7 +25,9 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
-            ],
+                'approved' => true,
+
+        ],
             [
                 'name' => 'Djanogly Community Orchestra',
                 'address' => 'Djanogly Learning Trust, Sherwood Rise, Nottingham Road',
@@ -37,6 +39,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
             [
@@ -50,6 +53,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
             [
@@ -63,6 +67,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
             [
@@ -76,6 +81,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
             [
@@ -89,6 +95,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
             [
@@ -102,6 +109,7 @@ class GroupSeeder extends Seeder
                 'image' => 'https://placehold.co/400',
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
+                'approved' => true,
             ],
 
         ]);
