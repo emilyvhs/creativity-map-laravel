@@ -47,49 +47,73 @@
     $thirdActivities = Group::find($group->id)->thirdActivities;
     ?>
 
-<div class="flex flex-col p-4 m-4 border-2 rounded-sm border-teal-300">
+<div class="relative flex flex-col p-4 m-4 border-2 rounded-sm border-teal-300">
 
-    <p><strong>Name of group:</strong> {{ $group->name }}</p>
-    <p><strong>Street address:</strong> {{ $group->address }}</p>
-    <p><strong>City:</strong> {{ $group->city }}</p>
-    <p><strong>Postcode:</strong> {{ $group->postcode }}</p>
-    <p><strong>Group description:</strong> {{ $group->description }}</p>
-    <p><strong>Contact name:</strong> {{ $group->contact_name }}</p>
-    <p><strong>Contact email:</strong> {{ $group->contact_email }}</p>
-    <p>
-        @foreach($firstActivities as $firstActivity)
-            <strong>First activity:</strong> {{ $firstActivity->activity }}
-        @endforeach
-        @forelse($secondActivities as $secondActivity)
-            <br><strong>Second activity:</strong> {{ $secondActivity->activity }}
-        @empty
-        @endforelse
-        @forelse($thirdActivities as $thirdActivity)
-            <br><strong>Third activity:</strong> {{ $thirdActivity->activity }}
-        @empty
-        @endforelse
-    </p>
+    <div class="blurred blur-sm">
 
-    <section class="flex justify-end gap-2 pt-4">
-        <div class="flex justify-center">
-            <a href="/approve/edit/{{ $group->id }}"
-               class="text-md font-semibold px-3 border-2 rounded-sm hover:border-yellow-300">
-                Edit submission</a>
-        </div>
-        <div class="flex justify-center">
-            <a href="/deleted/{{ $group->id }}"
-               class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
-                Delete submission</a>
-        </div>
-    </section>
+        <p><strong>Name of group:</strong> {{ $group->name }}</p>
+        <p><strong>Street address:</strong> {{ $group->address }}</p>
+        <p><strong>City:</strong> {{ $group->city }}</p>
+        <p><strong>Postcode:</strong> {{ $group->postcode }}</p>
+        <p><strong>Group description:</strong> {{ $group->description }}</p>
+        <p><strong>Contact name:</strong> {{ $group->contact_name }}</p>
+        <p><strong>Contact email:</strong> {{ $group->contact_email }}</p>
+        <p>
+            @foreach($firstActivities as $firstActivity)
+                <strong>First activity:</strong> {{ $firstActivity->activity }}
+            @endforeach
+            @forelse($secondActivities as $secondActivity)
+                <br><strong>Second activity:</strong> {{ $secondActivity->activity }}
+            @empty
+            @endforelse
+            @forelse($thirdActivities as $thirdActivity)
+                <br><strong>Third activity:</strong> {{ $thirdActivity->activity }}
+            @empty
+            @endforelse
+        </p>
 
-    <section class="flex justify-end pt-2">
-        <div class="flex justify-center">
-            <a href="/approved/{{ $group->id }}"
-               class="text-md font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300  border-fuchsia-500">
-                Approve submission</a>
+        <section class="flex justify-end gap-2 pt-4">
+            <div class="flex justify-center">
+                <a href="/approve/edit/{{ $group->id }}"
+                   class="text-md font-semibold px-3 border-2 rounded-sm hover:border-yellow-300">
+                    Edit submission</a>
+            </div>
+            <div class="flex justify-center">
+                <a href="/deleted/{{ $group->id }}"
+                   class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
+                    Delete submission</a>
+            </div>
+        </section>
+
+        <section class="flex justify-end pt-2">
+            <div class="flex justify-center">
+                <a href="/approved/{{ $group->id }}"
+                   class="text-md font-semibold px-3 border-2 rounded-sm
+                   hover:border-teal-300 hover:bg-teal-300  border-fuchsia-500">
+                    Approve submission</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal absolute right-4
+                flex flex-col w-[300px] p-4 border-2 rounded-sm border-teal-300 bg-white">
+        <div>
+            <p class="mb-4 text-md text-center font-semibold">Confirm approval?</p>
         </div>
-    </section>
+        <div class="flex justify-between">
+            <div class="flex justify-center">
+                <a href="/"
+                   class="text-md  font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300
+                   hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
+                    Approve</a>
+            </div>
+            <div class="flex justify-center">
+                <a href="/approve"
+                   class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
+                    Cancel</a>
+            </div>
+        </div>
+    </div>
 
 </div>
 
