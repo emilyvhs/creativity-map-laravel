@@ -115,6 +115,7 @@
             </div>
             <div class="flex justify-center">
                 <a href="#"
+                   onclick="handleApproveModalCancel()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Cancel</a>
             </div>
