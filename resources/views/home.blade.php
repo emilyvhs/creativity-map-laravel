@@ -15,6 +15,11 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&loading=async&libraries=maps&v=beta" defer>
+    </script>
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
@@ -61,6 +66,16 @@
     <div></div>
 
 </section>
+
+<div class="m-6">
+    <gmp-map
+        center="54.251186, -4.463196"
+        zoom="6"
+        map-id="CREATIVITY_MAP"
+        style="height: 600px"
+
+    ></gmp-map>
+</div>
 
 <form>
     @csrf
