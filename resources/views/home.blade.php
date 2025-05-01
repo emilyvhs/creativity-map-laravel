@@ -17,7 +17,7 @@
     <!-- Styles / Scripts -->
 
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&loading=async&libraries=maps&v=beta" defer>
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&loading=async&libraries=maps&v=beta&libraries=marker" defer>
     </script>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -66,16 +66,6 @@
     <div></div>
 
 </section>
-
-<div class="m-6">
-    <gmp-map
-        center="54.251186, -4.463196"
-        zoom="6"
-        map-id="CREATIVITY_MAP"
-        style="height: 600px"
-
-    ></gmp-map>
-</div>
 
 <form>
     @csrf
@@ -128,15 +118,68 @@
 
 @isset($groups)
 
-        <?php $counter = 0 ?>
+    <?php $counter = 0 ?>
+
     @foreach($groups as $group)
-            <?php $counter++ ?>
+        <?php $counter++ ?>
     @endforeach
 
     @if ($counter > 0)
         <p class="mx-4 text-xl font-semibold
                   md:text-center">Groups found: {{ $counter }}</p>
     @endif
+
+    <div class="m-6">
+
+        <?php
+            $location = $_GET['location']
+        ?>
+
+        @if($location && $location != ' ')
+
+            @foreach($groups as $group)
+
+                @if ($loop->first)
+                    <gmp-map
+                        center="{{ $group->lat }}, {{ $group->lng }}"
+                        zoom="11"
+                        map-id="CREATIVITY_MAP"
+                        style="height: 600px"
+                    >
+                        <gmp-advanced-marker
+                            position="{{ $group->lat }}, {{ $group->lng }}"
+                            title="{{ $group->name }}"
+                        ></gmp-advanced-marker>
+                @endif
+                        <gmp-advanced-marker
+                            position="{{ $group->lat }}, {{ $group->lng }}"
+                            title="{{ $group->name }}"
+                        ></gmp-advanced-marker>
+
+            @endforeach
+            </gmp-map>
+
+        @else
+
+        <gmp-map
+            center="54.251186, -4.463196"
+            zoom="6"
+            map-id="CREATIVITY_MAP"
+            style="height: 600px"
+        >
+
+        @foreach($groups as $group)
+            <gmp-advanced-marker
+                position="{{ $group->lat }}, {{ $group->lng }}"
+                title="{{ $group->name }}"
+            ></gmp-advanced-marker>
+
+        @endforeach
+        </gmp-map>
+
+        @endif
+
+    </div>
 
     <section class="md:grid md:grid-cols-3">
 
