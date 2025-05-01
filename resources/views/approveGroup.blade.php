@@ -84,7 +84,8 @@
                     Edit submission</a>
             </div>
             <div class="flex justify-center">
-                <a href="/deleted/{{ $group->id }}"
+                <a href="#"
+                   onclick="handleDeleteClick()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Delete submission</a>
             </div>
@@ -116,6 +117,27 @@
             <div class="flex justify-center">
                 <a href="#"
                    onclick="handleApproveModalCancel()"
+                   class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
+                    Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="delete-modal hidden absolute right-4 bottom-4
+                flex flex-col w-[300px] p-4 border-2 rounded-sm border-teal-300 bg-white">
+        <div>
+            <p class="mb-4 text-md text-center font-semibold">Confirm deletion?</p>
+        </div>
+        <div class="flex justify-between">
+            <div class="flex justify-center">
+                <a href="/deleted/{{ $group->id }}"
+                   class="text-md  font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300
+                   hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
+                    Delete</a>
+            </div>
+            <div class="flex justify-center">
+                <a href="#"
+                   onclick="handleDeleteModalCancel()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Cancel</a>
             </div>
