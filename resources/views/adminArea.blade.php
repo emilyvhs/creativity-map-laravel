@@ -20,15 +20,49 @@
         @endif
     </head>
 
-<body>
+<body class="bg-indigo-100">
 
-give body a slight background colour to show it's an admin area
+
 welcome, username
 counter to show number of pending groups waiting for approval and button to approve view
 edit existing group - search by name
 add new group
 logout
 
+<header class="flex justify-between
+               md:justify-start">
+    <div class="flex justify-center m-4">
+        <a href="/"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Go back to the map</a>
+    </div>
+    <div class="flex justify-center m-4">
+        <a href="#"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Logout</a>
+    </div>
+</header>
+
+<section class="m-6
+            md:grid md:grid-cols-5 ">
+    <div></div>
+
+    <div class="md:col-span-3">
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area | Welcome, </h1>
+        <p>This tool will help you find local creative groups near you.<br><br>
+            You can explore the map by searching for a:</p>
+        <ul class="list-disc list-inside pl-4">
+            <li>location</li>
+            <li>group name</li>
+            <li>creative activity</li>
+        </ul><br>
+        <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
+
+    </div>
+
+    <div></div>
+
+</section>
 
 
 </body>

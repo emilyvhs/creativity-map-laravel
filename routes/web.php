@@ -27,4 +27,4 @@ Route::get('deleted/{id}', [ApproveController::class, 'delete']);
 Route::get('approve/edit/{id}', [GroupController::class, 'displayEditForm']);
 Route::patch('approve/edit/{id}', [GroupController::class, 'update']);
 
-Route::get('admin', [UserController::class, 'displayAdminArea']);
+Route::get('admin/{id}', [UserController::class, 'displayAdminArea']);
