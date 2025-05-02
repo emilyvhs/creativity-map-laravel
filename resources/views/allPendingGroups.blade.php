@@ -1471,7 +1471,7 @@
 
 </head>
 
-<body>
+<body class="bg-indigo-100">
 
 <header class="flex justify-between
                md:justify-start">
@@ -1496,7 +1496,7 @@
 
     @foreach($groups as $group)
 
-        <div class="p-4 m-4 border-2 rounded-sm border-teal-300 hover:border-fuchsia-500">
+        <div class="p-4 m-4 border-2 rounded-sm bg-white border-teal-300 hover:border-fuchsia-500">
             <a href="/approve/{{ $group->id }}">
                 <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
                 <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>

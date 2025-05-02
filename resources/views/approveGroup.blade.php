@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body class="bg-indigo-100">
 
 
 <header class="flex justify-between
@@ -52,7 +52,7 @@
     $thirdActivities = Group::find($group->id)->thirdActivities;
     ?>
 
-<div class="relative flex flex-col p-4 m-4 border-2 rounded-sm border-teal-300">
+<div class="relative flex flex-col p-4 m-4 border-2 bg-white rounded-sm border-teal-300">
 
     <div class="blurred">
 

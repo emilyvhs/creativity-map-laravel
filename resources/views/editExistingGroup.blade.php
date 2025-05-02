@@ -21,7 +21,7 @@
     @endif
 </head>
 
-<body>
+<body class="bg-indigo-100">
 
 <?php
 $firstActivities = Group::find($group->id)->firstActivities;
@@ -60,7 +60,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="name" name="name" value="{{ $group->name }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
@@ -69,7 +69,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="address" name="address" value="{{ $group->address }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
@@ -78,7 +78,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="city" name="city" value="{{ $group->city }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
@@ -87,7 +87,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="postcode" name="postcode" value="{{ $group->postcode }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
@@ -96,7 +96,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <textarea id="description" name="description"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">{{ $group->description }}
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500">{{ $group->description }}
                         </textarea>
                     </label>
                 </div>
@@ -106,7 +106,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="contact_name" name="contact_name" value="{{ $group->contact_name }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
                 <div>
@@ -115,7 +115,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <input type="text" id="contact_email" name="contact_email" value="{{ $group->contact_email }}"
-                               class="w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500"/>
+                               class="w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500"/>
                     </label>
                 </div>
 
@@ -128,7 +128,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <select id="activity1" name="activity1"
-                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                                class="p-1 w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500">
                             <option selected value="{{ $group->activity1 }}">@foreach($firstActivities as $firstActivity){{ $firstActivity->activity }}@endforeach</option>
                             @foreach($activities as $activity)
                                 @if($activity->id != $group->activity1)
@@ -143,7 +143,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <select id="activity2" name="activity2"
-                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                                class="p-1 w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500">
                             <option selected value="{{ $group->activity2 }}">@foreach($secondActivities as $secondActivity){{ $secondActivity->activity }}@endforeach</option>
                             @foreach($activities as $activity)
                                 @if($activity->id != $group->activity2)
@@ -159,7 +159,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                         <p class="text-red-600">{{ $message }} </p>
                         @enderror
                         <select id="activity3" name="activity3"
-                                class="p-1 w-full border-2 rounded-sm border-teal-300 focus:outline-fuchsia-500">
+                                class="p-1 w-full border-2 rounded-sm bg-white border-teal-300 focus:outline-fuchsia-500">
                             <option selected value="{{ $group->activity3 }}">@foreach($thirdActivities as $thirdActivity){{ $thirdActivity->activity }}@endforeach
                             @foreach($activities as $activity)
                                 @if($activity->id != $group->activity3)
