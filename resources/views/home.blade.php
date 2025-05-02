@@ -220,5 +220,14 @@
     </section>
 @endisset
 
+<footer class="flex justify-between
+               md:justify-start">
+    <div class="flex justify-center m-4">
+        <a href="/login"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Admin log in</a>
+    </div>
+</footer>
+
 </body>
 </html>
