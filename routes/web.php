@@ -4,6 +4,7 @@ use App\Http\Controllers\ApproveController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\SuccessController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GroupController::class, 'search']);
@@ -25,3 +26,5 @@ Route::get('deleted/{id}', [ApproveController::class, 'delete']);
 
 Route::get('approve/edit/{id}', [GroupController::class, 'displayEditForm']);
 Route::patch('approve/edit/{id}', [GroupController::class, 'update']);
+
+Route::get('admin', [UserController::class, 'displayAdminArea']);
