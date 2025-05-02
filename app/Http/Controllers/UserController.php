@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function displayAdminLoginForm() {
+        return view('adminLoginForm');
+    }
+
     public function displayAdminArea(Request $request, int $id) {
 
         $pendingGroups = Group::where('approved', '=', 0)

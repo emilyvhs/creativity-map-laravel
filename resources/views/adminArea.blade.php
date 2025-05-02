@@ -22,7 +22,6 @@
 
 <body class="bg-indigo-100">
 
-edit existing group - search by name
 add new group
 logout
 
@@ -93,7 +92,7 @@ logout
         @forelse($groups as $group)
 
             <div class="p-4 m-4 border-2 rounded-sm hover:border-teal-300 border-fuchsia-500 bg-white">
-                <a href="#">
+                <a href="/edit/{{ $group->id }}">
                     <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
                     <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
                 </a>

@@ -19,12 +19,18 @@ Route::get('map', [MapController::class, 'getCoordinates']);
 
 Route::get('success', [SuccessController::class, 'display']);
 
+Route::get('admin', [UserController::class, 'displayAdminLoginForm']);
+Route::get('admin/{id}', [UserController::class, 'displayAdminArea']);
+
+Route::get('edit/{id}', [GroupController::class, 'displayEditExistingGroupForm']);
+Route::patch('edit/{id}', [GroupController::class, 'updateExistingGroup']);
+
 Route::get('approve', [ApproveController::class, 'all']);
 Route::get('approve/{id}', [ApproveController::class, 'find']);
 Route::get('approved/{id}', [ApproveController::class, 'approve']);
 Route::get('deleted/{id}', [ApproveController::class, 'delete']);
 
-Route::get('approve/edit/{id}', [GroupController::class, 'displayEditForm']);
-Route::patch('approve/edit/{id}', [GroupController::class, 'update']);
+Route::get('approve/edit/{id}', [GroupController::class, 'displayEditPendingGroupForm']);
+Route::patch('approve/edit/{id}', [GroupController::class, 'updatePendingGroup']);
 
-Route::get('admin/{id}', [UserController::class, 'displayAdminArea']);
+
