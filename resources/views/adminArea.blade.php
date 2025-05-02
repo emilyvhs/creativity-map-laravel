@@ -22,9 +22,6 @@
 
 <body class="bg-indigo-100">
 
-
-welcome, username
-counter to show number of pending groups waiting for approval and button to approve view
 edit existing group - search by name
 add new group
 logout
@@ -49,7 +46,7 @@ logout
 
     <div class="md:col-span-3">
         <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area | Welcome, {{ $user->name }} </h1>
-
+        <h2 class="font-semibold text-3xl pb-4">Approve new groups</h2>
         <?php $counter = 0 ?>
 
         @foreach($groups as $group)
@@ -57,8 +54,9 @@ logout
         @endforeach
 
         @if ($counter > 0)
+
             <div class="flex items-baseline gap-4">
-                <p>New groups awaiting approval: <strong>{{ $counter }}</strong></p>
+                <p class="font-semibold">New groups awaiting approval: {{ $counter }}</p>
 
                 <div class="flex justify-center">
                     <a href="/approve"
@@ -70,6 +68,28 @@ logout
         @else
             <p>No new groups to approve.</p>
         @endif
+
+        <h2 class="font-semibold text-3xl py-4">Edit an existing group</h2>
+
+        <form>
+            <div class="flex items-baseline">
+                <div>
+                    <label class="font-semibold">Group name:
+                        <input type="text" id="name" name="name"
+                               class="border-2 rounded-sm bg-white border-fuchsia-500 focus:outline-teal-300"/>
+                    </label>
+                </div>
+                <div class="flex justify-center m-4">
+                    <input type="submit" value="Search"
+                           class="cursor-pointer text-md font-semibold px-3 border-2 rounded-sm
+                           hover:border-teal-300 hover:bg-teal-300 hover:text-black  border-fuchsia-500 bg-fuchsia-500 text-white"/>
+                </div>
+            </div>
+
+
+
+
+        </form>
 
 
 
