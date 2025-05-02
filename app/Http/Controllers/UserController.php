@@ -16,11 +16,15 @@ class UserController extends Controller
 
     public function displayAdminArea(Request $request) {
 
+        if (!Auth::user()) {
+            abort(403);
+        }
+
         $pendingGroups = Group::where('approved', '=', 0)
             ->where('deleted', '=', 0)
             ->get();
 
-        if (! $request->name) {
+        if (!$request->name) {
             return view('adminArea', [
                 'pendingGroups' => $pendingGroups,
             ]);
@@ -37,17 +41,16 @@ class UserController extends Controller
                 'groups' => $groups,
             ]);
         }
-
     }
 
     public function login(Request $request) {
 
-        $credentials = $request->validate([
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'admin' => 1])) {
             $request->session()->regenerate();
             return redirect('/admin');
         }

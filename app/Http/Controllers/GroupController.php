@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
@@ -224,6 +225,10 @@ class GroupController extends Controller
 
     public function displayEditPendingGroupForm(int $id)
     {
+        if (!Auth::user()) {
+            abort(403);
+        }
+
         $activities = Activity::all();
         $group = Group::where('deleted', '=', 0)
             ->where('approved', '=', 0)
@@ -237,6 +242,10 @@ class GroupController extends Controller
 
     public function updatePendingGroup(Request $request, int $id)
     {
+        if (!Auth::user()) {
+            abort(403);
+        }
+
         $group = Group::where('deleted', '=', 0)
             ->where('approved', '=', 0)
             ->find($id);
@@ -289,6 +298,10 @@ class GroupController extends Controller
 
     public function displayEditExistingGroupForm(int $id)
     {
+        if (!Auth::user()) {
+            abort(403);
+        }
+
         $activities = Activity::all();
         $group = Group::where('deleted', '=', 0)
             ->where('approved', '=', 1)
@@ -302,6 +315,10 @@ class GroupController extends Controller
 
     public function updateExistingGroup(Request $request, int $id)
     {
+        if (!Auth::user()) {
+            abort(403);
+        }
+
         $group = Group::where('deleted', '=', 0)
             ->where('approved', '=', 1)
             ->find($id);
