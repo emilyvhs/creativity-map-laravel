@@ -22,6 +22,7 @@ Route::get('success', [SuccessController::class, 'display']);
 Route::get('login', [UserController::class, 'displayAdminLoginForm']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('admin', [UserController::class, 'displayAdminArea']);
+Route::get('logout', [UserController::class, 'logout']);
 
 Route::get('edit/{id}', [GroupController::class, 'displayEditExistingGroupForm']);
 Route::patch('edit/{id}', [GroupController::class, 'updateExistingGroup']);
