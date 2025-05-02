@@ -19,8 +19,9 @@ Route::get('map', [MapController::class, 'getCoordinates']);
 
 Route::get('success', [SuccessController::class, 'display']);
 
-Route::get('admin', [UserController::class, 'displayAdminLoginForm']);
-Route::get('admin/{id}', [UserController::class, 'displayAdminArea']);
+Route::get('login', [UserController::class, 'displayAdminLoginForm']);
+Route::post('login', [UserController::class, 'login']);
+Route::get('admin', [UserController::class, 'displayAdminArea']);
 
 Route::get('edit/{id}', [GroupController::class, 'displayEditExistingGroupForm']);
 Route::patch('edit/{id}', [GroupController::class, 'updateExistingGroup']);

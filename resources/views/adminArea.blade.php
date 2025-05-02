@@ -44,7 +44,7 @@ logout
     <div></div>
 
     <div class="md:col-span-3">
-        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area | Welcome, {{ $user->name }} </h1>
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area</h1>
         <h2 class="font-semibold text-3xl pb-4">Approve new groups</h2>
         <?php $counter = 0 ?>
 
@@ -71,6 +71,7 @@ logout
         <h2 class="font-semibold text-3xl py-4">Edit an existing group</h2>
 
         <form>
+            @csrf
             <div class="flex items-baseline">
                 <div>
                     <label class="font-semibold">Group name:

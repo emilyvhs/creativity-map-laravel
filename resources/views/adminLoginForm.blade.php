@@ -22,5 +22,54 @@
 
 <body class="bg-indigo-100">
 
+<header class="flex justify-between
+               md:justify-start">
+    <div class="flex justify-center m-4">
+        <a href="/"
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+            Go back to the map</a>
+    </div>
+
+</header>
+
+<section class="m-6
+            md:grid md:grid-cols-5 ">
+    <div></div>
+
+    <div class="md:col-span-3">
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin log in</h1>
+        <form method="POST" action="/login">
+            @csrf
+
+            <div>
+                <label class="font-semibold">Email:
+                    <input type="text" id="email" name="email"
+                           class="w-full border-2 rounded-sm bg-white focus:outline-teal-300 border-fuchsia-500"/>
+                </label>
+            </div>
+            <div>
+                <label class="font-semibold">Password:
+                    <input type="password" id="password" name="password"
+                           class="w-full border-2 rounded-sm bg-white focus:outline-teal-300 border-fuchsia-500"/>
+                </label>
+            </div>
+
+            <div class="flex justify-center m-4">
+                <input type="submit" value="Log in"
+                       class="cursor-pointer text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black"/>
+            </div>
+
+            @error('email')
+            <p class="text-red-600">{{ $message }} </p>
+            @enderror
+
+        </form>
+
+    </div>
+
+    <div></div>
+
+</section>
+
 </body>
 </html>

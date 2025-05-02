@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -13,19 +14,15 @@ class UserController extends Controller
         return view('adminLoginForm');
     }
 
-    public function displayAdminArea(Request $request, int $id) {
+    public function displayAdminArea(Request $request) {
 
         $pendingGroups = Group::where('approved', '=', 0)
             ->where('deleted', '=', 0)
             ->get();
 
-        $user = User::where('admin', '=', 1)
-            ->find($id);
-
         if (! $request->name) {
             return view('adminArea', [
                 'pendingGroups' => $pendingGroups,
-                'user' => $user
             ]);
         }
 
@@ -37,12 +34,28 @@ class UserController extends Controller
 
             return view('adminArea', [
                 'pendingGroups' => $pendingGroups,
-                'user' => $user,
                 'groups' => $groups,
             ]);
         }
 
+    }
 
+    public function login(Request $request) {
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/admin');
+        }
+
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.'
+        ])->onlyInput('email');
 
     }
 }
