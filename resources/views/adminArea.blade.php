@@ -49,7 +49,7 @@ logout
         <h2 class="font-semibold text-3xl pb-4">Approve new groups</h2>
         <?php $counter = 0 ?>
 
-        @foreach($groups as $group)
+        @foreach($pendingGroups as $pendingGroup)
             <?php $counter++ ?>
         @endforeach
 
@@ -86,10 +86,29 @@ logout
                 </div>
             </div>
 
-
-
-
         </form>
+
+    @isset($groups)
+
+        @forelse($groups as $group)
+
+            <div class="p-4 m-4 border-2 rounded-sm hover:border-teal-300 border-fuchsia-500 bg-white">
+                <a href="#">
+                    <h2 class="font-semibold text-3xl">{{ $group->name }}</h2>
+                    <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
+                </a>
+            </div>
+        @empty
+            <p>Sorry, no creative groups found! Please try a different search.</p>
+        @endforelse
+
+   @endisset
+
+
+
+
+
+
 
 
 
@@ -100,7 +119,6 @@ logout
     <div></div>
 
 </section>
-
 
 </body>
 
