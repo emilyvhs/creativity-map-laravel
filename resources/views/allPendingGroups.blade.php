@@ -1476,9 +1476,9 @@
 <header class="flex justify-between
                md:justify-start">
     <div class="flex justify-center m-4">
-        <a href="/"
+        <a href="/admin"
            class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
-            Go back to the map</a>
+            Go back to admin area</a>
     </div>
 
 </header>
