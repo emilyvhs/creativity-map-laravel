@@ -48,15 +48,32 @@ logout
     <div></div>
 
     <div class="md:col-span-3">
-        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area | Welcome, </h1>
-        <p>This tool will help you find local creative groups near you.<br><br>
-            You can explore the map by searching for a:</p>
-        <ul class="list-disc list-inside pl-4">
-            <li>location</li>
-            <li>group name</li>
-            <li>creative activity</li>
-        </ul><br>
-        <p>Have fun, and we hope you find a new opportunity near you to get creative!</p>
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Admin area | Welcome, {{ $user->name }} </h1>
+
+        <?php $counter = 0 ?>
+
+        @foreach($groups as $group)
+            <?php $counter++ ?>
+        @endforeach
+
+        @if ($counter > 0)
+            <div class="flex items-baseline gap-4">
+                <p>New groups awaiting approval: <strong>{{ $counter }}</strong></p>
+
+                <div class="flex justify-center">
+                    <a href="/approve"
+                       class="text-md font-semibold px-3 border-2 rounded-sm
+                       hover:border-teal-300 hover:bg-teal-300 hover:text-black  border-fuchsia-500 bg-fuchsia-500 text-white">
+                        Approve new groups</a>
+                </div>
+            </div>
+        @else
+            <p>No new groups to approve.</p>
+        @endif
+
+
+
+
 
     </div>
 
