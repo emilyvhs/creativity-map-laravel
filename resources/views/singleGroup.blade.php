@@ -58,6 +58,7 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                     md:flex-row md:gap-4 md:justify-between">
             <div>
                 <h3 class="font-semibold text-2xl">Location: {{ $group->city }}</h3>
+                <p class="font-semibold">Address: {{ $group->address }}</p>
                 <p class="text-xl py-4">
                     @foreach($firstActivities as $firstActivity)
                         Join us for: {{ $firstActivity->activity }}
