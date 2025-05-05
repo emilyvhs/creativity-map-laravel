@@ -26,6 +26,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 52.9235277,
+                'lng' => -1.4801051
 
             ],
             [
@@ -40,6 +42,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 52.9734743,
+                'lng' => -1.1615376
             ],
 
             [
@@ -54,6 +58,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 52.6348549,
+                'lng' => -1.1349254
             ],
 
             [
@@ -68,6 +74,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 52.9312732,
+                'lng' => -1.4889304
             ],
 
             [
@@ -82,6 +90,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 53.3428479,
+                'lng' => -7.0478368
             ],
 
             [
@@ -96,6 +106,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 55.9051721,
+                'lng' => -3.2814521
             ],
 
             [
@@ -110,6 +122,8 @@ class GroupSeeder extends Seeder
                 'contact_name' => fake()->name(),
                 'contact_email' => fake()->email(),
                 'approved' => true,
+                'lat' => 51.487203,
+                'lng' => -3.2723611
             ],
 
         ]);
