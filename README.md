@@ -9,6 +9,4 @@ This project is a proof-of-concept to create a functional mapper for creative ac
 
 3. Organisers and advocates for widening access to creative participation who would like to gather data on existing availability/types of local creative activities
 
-This project is currently in-progress.
-
-© Emily Sherwood 2025
+This project uses GeocoderLaravel: https://github.com/geocoder-php/GeocoderLaravel
