@@ -183,7 +183,7 @@
 
     </div>
 
-    <section class="md:grid md:grid-cols-3">
+    <section>
 
         @forelse($groups as $group)
             <?php
@@ -216,7 +216,7 @@
             </div>
 
         @empty
-            <p class="m-4">Sorry, no creative groups found! Please try a different search.</p>
+            <p class="text-center m-4">Sorry, no creative groups found! Please try a different search.</p>
         @endforelse
 
     </section>
