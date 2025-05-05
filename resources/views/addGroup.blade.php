@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Creativity Map</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,7 +26,8 @@
                md:justify-start">
     <div class="flex justify-center m-4">
         <a href="/"
-           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm
+           hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
             Go back to the map</a>
     </div>
 </header>
@@ -171,3 +172,5 @@
 </section>
 
 </body>
+
+</html>

@@ -34,5 +34,3 @@ Route::get('deleted/{id}', [ApproveController::class, 'delete']);
 
 Route::get('approve/edit/{id}', [GroupController::class, 'displayEditPendingGroupForm']);
 Route::patch('approve/edit/{id}', [GroupController::class, 'updatePendingGroup']);
-
-

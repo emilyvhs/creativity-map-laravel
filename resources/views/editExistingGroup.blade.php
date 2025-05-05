@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-
+    <title>Creativity Map</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -33,7 +32,8 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                md:justify-start">
     <div class="flex justify-center m-4">
         <a href="/admin"
-           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm
+           hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
             Go back to admin area</a>
     </div>
 </header>
@@ -121,7 +121,8 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
 
                 <div class="mt-4">
                     <p class="font-semibold">What creative activities does your group offer?</p>
-                    <p class="mb-2">Most groups will only need to choose <strong>one</strong> category which describes broadly what they do, but you can select up to three activities if you need to!</p>
+                    <p class="mb-2">Most groups will only need to choose <strong>one</strong>
+                        category which describes broadly what they do, but you can select up to three activities if you need to!</p>
 
                     <label class="font-semibold">First activity<span class="font-normal">*</span>:
                         @error('activity1')
@@ -185,3 +186,5 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
 </section>
 
 </body>
+
+</html>

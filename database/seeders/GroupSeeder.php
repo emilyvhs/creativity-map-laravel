@@ -27,7 +27,7 @@ class GroupSeeder extends Seeder
                 'contact_email' => fake()->email(),
                 'approved' => true,
 
-        ],
+            ],
             [
                 'name' => 'Djanogly Community Orchestra',
                 'address' => 'Djanogly Learning Trust, Sherwood Rise, Nottingham Road',

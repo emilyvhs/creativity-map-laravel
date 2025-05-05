@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-
+        <title>Creativity Map</title>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -26,7 +25,8 @@
                md:justify-start">
     <div class="flex justify-center m-4">
         <a href="/"
-           class="text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
+           class="text-lg text-white font-semibold px-3 border-2 rounded-sm
+           hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black">
             Go back to the map</a>
     </div>
 
@@ -44,19 +44,22 @@
             <div>
                 <label class="font-semibold">Email:
                     <input type="text" id="email" name="email"
-                           class="w-full border-2 rounded-sm bg-white focus:outline-teal-300 border-fuchsia-500"/>
+                           class="w-full border-2 rounded-sm
+                           bg-white focus:outline-teal-300 border-fuchsia-500"/>
                 </label>
             </div>
             <div>
                 <label class="font-semibold">Password:
                     <input type="password" id="password" name="password"
-                           class="w-full border-2 rounded-sm bg-white focus:outline-teal-300 border-fuchsia-500"/>
+                           class="w-full border-2 rounded-sm
+                           bg-white focus:outline-teal-300 border-fuchsia-500"/>
                 </label>
             </div>
 
             <div class="flex justify-center m-4">
                 <input type="submit" value="Log in"
-                       class="cursor-pointer text-lg text-white font-semibold px-3 border-2 rounded-sm hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black"/>
+                       class="cursor-pointer text-lg text-white font-semibold px-3 border-2 rounded-sm
+                       hover:border-teal-300 hover:bg-teal-300 border-fuchsia-500 bg-fuchsia-500 hover:text-black"/>
             </div>
 
             @error('email')

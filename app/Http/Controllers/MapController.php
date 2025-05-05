@@ -28,6 +28,4 @@ class MapController extends Controller
 
         return redirect('/approve');
     }
-
-
 }

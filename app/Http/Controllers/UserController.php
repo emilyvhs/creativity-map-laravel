@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function displayAdminLoginForm() {
+    public function displayAdminLoginForm()
+    {
         return view('adminLoginForm');
     }
 
-    public function displayAdminArea(Request $request) {
+    public function displayAdminArea(Request $request)
+    {
 
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             abort(403);
         }
 
@@ -24,7 +25,7 @@ class UserController extends Controller
             ->where('deleted', '=', 0)
             ->get();
 
-        if (!$request->name) {
+        if (! $request->name) {
             return view('adminArea', [
                 'pendingGroups' => $pendingGroups,
             ]);
@@ -43,26 +44,28 @@ class UserController extends Controller
         }
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
 
         $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'admin' => 1])) {
             $request->session()->regenerate();
+
             return redirect('/admin');
         }
 
-
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.'
+            'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
 
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
 
         Auth::logout();
 

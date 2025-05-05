@@ -225,7 +225,7 @@ class GroupController extends Controller
 
     public function displayEditPendingGroupForm(int $id)
     {
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             abort(403);
         }
 
@@ -242,7 +242,7 @@ class GroupController extends Controller
 
     public function updatePendingGroup(Request $request, int $id)
     {
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             abort(403);
         }
 
@@ -298,7 +298,7 @@ class GroupController extends Controller
 
     public function displayEditExistingGroupForm(int $id)
     {
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             abort(403);
         }
 
@@ -315,7 +315,7 @@ class GroupController extends Controller
 
     public function updateExistingGroup(Request $request, int $id)
     {
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             abort(403);
         }
 
