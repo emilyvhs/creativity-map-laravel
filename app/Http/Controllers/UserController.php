@@ -14,13 +14,35 @@ class UserController extends Controller
         return view('adminLoginForm');
     }
 
-    public function displayAdminArea(Request $request)
+    public function login(Request $request)
     {
 
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        //Check if user's email and password are correct, and if they're an admin
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'admin' => 1])) {
+            $request->session()->regenerate();
+
+            return redirect('/admin');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+
+    }
+
+    public function displayAdminArea(Request $request)
+    {
+        //Check if user is logged in and authorised as admin
         if (! Auth::user()) {
             abort(403);
         }
 
+        //Display admin area with any groups pending approval
         $pendingGroups = Group::where('approved', '=', 0)
             ->where('deleted', '=', 0)
             ->get();
@@ -31,6 +53,7 @@ class UserController extends Controller
             ]);
         }
 
+        //Search for existing groups
         if ($request->name !== '') {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -42,26 +65,6 @@ class UserController extends Controller
                 'groups' => $groups,
             ]);
         }
-    }
-
-    public function login(Request $request)
-    {
-
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'admin' => 1])) {
-            $request->session()->regenerate();
-
-            return redirect('/admin');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-
     }
 
     public function logout(Request $request)

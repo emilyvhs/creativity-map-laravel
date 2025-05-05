@@ -13,9 +13,4 @@ class ActivityController extends Controller
         return $activities;
     }
 
-    //    public function activity1()
-    //    {
-    //        $activity1 = Activity::class->activity1();
-    //        return $activity1;
-    //    }
 }

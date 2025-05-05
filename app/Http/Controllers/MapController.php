@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
+    //Get latitude and longitude coordinates from a street address using Geocoder, then redirect back to page showing any remaining groups waiting for approval
     public function getCoordinates()
     {
         $rows = DB::table('groups')

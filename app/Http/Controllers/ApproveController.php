@@ -28,8 +28,10 @@ class ApproveController extends Controller
         ]);
     }
 
+    //Approve pending groups and redirect to map function to find coordinates from Geocoder
     public function approve(int $id)
     {
+
         $group = Group::where('approved', '=', 0)
             ->where('deleted', '=', 0)
             ->find($id);

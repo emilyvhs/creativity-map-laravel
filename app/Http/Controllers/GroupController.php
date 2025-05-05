@@ -36,12 +36,14 @@ class GroupController extends Controller
     {
         $activities = Activity::all();
 
+        //Display the homepage when no search has been submitted yet
         if (! $request->location && ! $request->name && ! $request->activity) {
             return view('home', [
                 'activities' => $activities,
             ]);
         }
 
+        //Search with input into all fields - location, group name, and activity
         if (($request->location !== '') && ($request->name !== '') && ($request->activity != 'all')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -63,6 +65,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with input into location and name fields
         if (($request->location !== '') && ($request->name !== '') && ($request->activity === 'all')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -79,6 +82,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with input into name and activity fields
         if (($request->name !== '') && ($request->activity != 'all') && ($request->location === '')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -96,6 +100,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with input into location and activity fields
         if (($request->location !== '') && ($request->activity != 'all') && ($request->name === '')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -116,6 +121,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with only input into location field
         if (($request->location !== '') && ($request->activity === 'all') && ($request->name === '')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -131,6 +137,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with only input into group name field
         if (($request->name !== '') && ($request->activity === 'all') && ($request->location === '')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
@@ -143,6 +150,7 @@ class GroupController extends Controller
             ]);
         }
 
+        //Search with only input into activity field
         if (($request->activity !== 'all') && ($request->name === '') && ($request->location === '')) {
             $groups = DB::table('groups')->where('deleted', '=', 0)
                 ->where('approved', '=', 1)
