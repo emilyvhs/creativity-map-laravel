@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use Illuminate\Support\Facades\Auth;
 
 class ApproveController extends Controller
 {
@@ -45,14 +46,28 @@ class ApproveController extends Controller
 
     public function delete(int $id)
     {
-        $group = Group::where('approved', '=', 0)
-            ->where('deleted', '=', 0)
+
+        $group = Group::where('deleted', '=', 0)
             ->find($id);
+
+        if (! Auth::user()) {
+            abort(403);
+        }
+
+        if ($group->approved == 0) {
+
+            $group->deleted = 1;
+
+            $group->save();
+
+            return redirect('/approve');
+        }
 
         $group->deleted = 1;
 
         $group->save();
 
-        return redirect('/approve');
+        return redirect('/admin');
+
     }
 }

@@ -81,8 +81,8 @@
                     Edit submission</a>
             </div>
             <div class="flex justify-center">
-                <a href="#"
-                   onclick="handleDeleteClick()"
+                <a href="javascript:void(0)"
+                   onclick="handleDeletePendingGroupClick()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Delete submission</a>
             </div>
@@ -90,7 +90,7 @@
 
         <section class="flex justify-end pt-2">
             <div class="flex justify-center">
-                <a href="#"
+                <a href="javascript:void(0)"
                    onclick="handleApproveClick()"
                    class="text-md font-semibold px-3 border-2 rounded-sm
                    hover:border-teal-300 hover:bg-teal-300  border-fuchsia-500">
@@ -112,7 +112,7 @@
                     Approve</a>
             </div>
             <div class="flex justify-center">
-                <a href="#"
+                <a href="javascript:void(0)"
                    onclick="handleApproveModalCancel()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Cancel</a>
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    <div class="delete-modal hidden absolute right-4 bottom-4
+    <div class="delete-modal-pending-group hidden absolute right-4 bottom-4
                 flex flex-col w-[300px] p-4 border-2 rounded-sm border-teal-300 bg-white">
         <div>
             <p class="mb-4 text-md text-center font-semibold">Confirm deletion?</p>
@@ -133,8 +133,8 @@
                     Delete</a>
             </div>
             <div class="flex justify-center">
-                <a href="#"
-                   onclick="handleDeleteModalCancel()"
+                <a href="javascript:void(0)"
+                   onclick="handleDeleteModalPendingGroupCancel()"
                    class="text-md font-semibold px-3 border-2 rounded-sm hover:border-red-500">
                     Cancel</a>
             </div>

@@ -2,7 +2,10 @@ import './bootstrap';
 
 let blurredSection = document.querySelector('.blurred')
 let approveModal = document.querySelector('.approve-modal')
-let deleteModal = document.querySelector('.delete-modal')
+let deleteModalPendingGroup = document.querySelector('.delete-modal-pending-group')
+let deleteExistingGroupButton = document.querySelector('.delete-button')
+let deleteConfirmationButtons = document.querySelector('.delete-confirmation-buttons')
+
 
 //Displays a pop-up asking you to confirm you want to approve the group
 window.handleApproveClick = function() {
@@ -10,10 +13,16 @@ window.handleApproveClick = function() {
     approveModal.classList.remove('hidden')
 }
 
-//Displays a pop-up asking you to confirm you want to delete the group
-window.handleDeleteClick = function() {
+//Displays a pop-up asking you to confirm you want to delete a pending group
+window.handleDeletePendingGroupClick = function() {
     blurredSection.classList.add('blur-sm')
-    deleteModal.classList.remove('hidden')
+    deleteModalPendingGroup.classList.remove('hidden')
+}
+
+//Displays confirmation buttons asking you to confirm you want to delete an existing group
+window.handleDeleteExistingGroupClick = function() {
+    deleteExistingGroupButton.classList.add('hidden')
+    deleteConfirmationButtons.classList.remove('hidden')
 }
 
 //Closes the approval pop-up without action
@@ -22,8 +31,14 @@ window.handleApproveModalCancel = function() {
     approveModal.classList.add('hidden')
 }
 
-//Closes the cancel pop-up without action
-window.handleDeleteModalCancel = function() {
+//Closes the delete pending group pop-up without action
+window.handleDeleteModalPendingGroupCancel = function() {
     blurredSection.classList.remove('blur-sm')
-    deleteModal.classList.add('hidden')
+    deleteModalPendingGroup.classList.add('hidden')
+}
+
+//Closes delete existing group confirmation buttons
+window.handleDeleteExistingGroupCancel = function() {
+    deleteExistingGroupButton.classList.remove('hidden')
+    deleteConfirmationButtons.classList.add('hidden')
 }

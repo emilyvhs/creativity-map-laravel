@@ -44,9 +44,10 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
 
     <div class="md:col-span-3">
 
-        <h1 class="font-bold text-4xl text-center px-4 pb-4">Edit existing group</h1>
+        <h1 class="font-bold text-4xl text-center px-4 pb-4">Edit or remove existing group</h1>
 
         <div class="flex flex-col m-6 gap-2">
+
             <form action="/edit/{{ $group->id }}" method="POST">
                 <input type="hidden" name="_method" value="PATCH" />
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -172,12 +173,39 @@ $thirdActivities = Group::find($group->id)->thirdActivities;
                     </label>
                     </div>
 
-                <div class="flex justify-center m-4">
-                    <input type="submit" value="Save edits"
-                           class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"/>
-                </div>
+                <section class="flex justify-center gap-2 pt-4">
+
+                    <div class="flex justify-center m-4">
+                        <input type="submit" value="Save edits"
+                               class="cursor-pointer text-2xl font-semibold px-3 border-2 rounded-sm
+                               border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"/>
+                    </div>
+                    <div class="delete-button flex justify-center m-4">
+                        <a href="javascript:void(0)"
+                           onclick="handleDeleteExistingGroupClick()"
+                           class="text-2xl font-semibold px-3 border-2 rounded-sm bg-white border-red-500 hover:bg-red-500 hover:text-white">
+                            Delete group</a>
+                    </div>
+
+                    <div class="flex delete-confirmation-buttons hidden">
+                        <div class="flex justify-center m-4">
+                            <a href="/deleted/{{ $group->id }}"
+                               class="text-2xl font-semibold px-3 border-2 rounded-sm bg-white border-red-500 hover:bg-red-500 hover:text-white">
+                                Confirm deletion</a>
+                        </div>
+                        <div class="flex justify-center m-4">
+                            <a href="javascript:void(0)"
+                               onclick="handleDeleteExistingGroupCancel()"
+                               class="text-2xl font-semibold px-3 border-2 rounded-sm
+                               border-teal-300 bg-teal-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
+                                Cancel deletion</a>
+                        </div>
+                    </div>
+
+                </section>
 
             </form>
+
         </div>
 
     </div>

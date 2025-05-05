@@ -67,7 +67,7 @@
             <p>No new groups to approve.</p>
         @endif
 
-        <h2 class="font-semibold text-3xl py-4">Edit an existing group</h2>
+        <h2 class="font-semibold text-3xl py-4">Edit or remove an existing group</h2>
 
         <form>
             @csrf
